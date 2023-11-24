@@ -97,10 +97,82 @@
         }
     </style>
     <script>
-      function showButtons() {
+        function showButtons() {
             document.getElementById("text").style.display = "none";
+            document.getElementById("textOne").style.display = "none";
             document.getElementById("showActionsBtn").style.display = "none";
             document.getElementById("actions").style.display = "flex";
+        }
+        function showQOne() {
+            document.getElementById("QOne").style.display = "none";
+            document.getElementById("answerOne").style.display = "initial";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFive").style.display = "none";
+            document.getElementById("answerSix").style.display = "none";
+        }
+        function showQTwo() {
+            document.getElementById("QTwo").style.display = "none";
+            document.getElementById("answerTwo").style.display = "initial";
+            document.getElementById("actionTwo").style.display = "flex";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFive").style.display = "none";
+            document.getElementById("answerSix").style.display = "none";
+        }
+        function showQTwoOne() {
+            document.getElementById("QTwoOne").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFive").style.display = "none";
+            document.getElementById("answerSix").style.display = "none";
+        }
+        function showQThree() {
+            document.getElementById("QThree").style.display = "none";
+            document.getElementById("answerThree").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFive").style.display = "none";
+            document.getElementById("answerSix").style.display = "none";
+        }
+        function showQFour() {
+            document.getElementById("QFour").style.display = "none";
+            document.getElementById("answerFour").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFive").style.display = "none";
+            document.getElementById("answerSix").style.display = "none";
+        }
+        function showQFive() {
+            document.getElementById("QFive").style.display = "none";
+            document.getElementById("answerFive").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerSix").style.display = "none";
+        }
+        function showQSix() {
+            document.getElementById("QSix").style.display = "none";
+            document.getElementById("answerSix").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFive").style.display = "none";
         }
     </script>
 </head>
@@ -108,19 +180,45 @@
 <body>
 
     <div id="left">
-        <img src="character4.png" alt="Background Image" style="max-width: 100%; max-height: 100%;">
+        <img src="character4_1.png" alt="Background Image" style="max-width: 70%; max-height: 100%;">
+        <img src="character4.png" alt="Background Image" style="max-width: 30%; max-height: 100%;">
     </div>
 
     <div id="right">
-        <p id="text"> text .</p> <!-- тут текст -->
-        <button id="showActionsBtn" onclick="showButtons()">Показати дії</button>
+        <h1 id="text">граф і графиня Андреній</h1>
+        <h2 id="textOne"> опис </h2>
+        <button id="showActionsBtn" onclick="showButtons()">Спитати</button>
+
+        <p id="answerOne" style="display: none; flex-direction: column;">Граф:<br />Як я зрозумів, це був американець – та людина з неприємним виразом обличчя. Але імені його я не знаю.</p>
+        <p id="answerTwo" style="display: none; flex-direction: column;">Графиня:<br />Мій чоловік близько року був у Вашингтоні. Я - ні.  Ми тоді ще не були одружені. Ми одружилися лише рік тому.</p>
+        <p id="answerTwoOne" style="display: none; flex-direction: column;">Граф:<br />Армстронг, Армстронг – важко пригадати. Я зустрічав багатьох людей. Але повернімося до справи, джентльмени. Чим я можу вам допомогти?</p>
+        <p id="answerThree" style="display: none; flex-direction: column;">Граф:<br />Ми попросили приготувати до сну одне купе, коли йшли вечеряти. Після повернення ми сіли в іншому - номер 13. Ми грали в пікет. Близько одинадцятої моя дружина пішла спати. Провідник постелив моє ліжко і я теж ліг. Я спав аж до ранку.</p>
+        <p id="answerFour" style="display: none; flex-direction: column;">Граф:<br />Ми не знали про це до самого ранку.</p>
+        <p id="answerFive" style="display: none; flex-direction: column;">Графиня:<br />Абсолютно.</p>
+        <p id="answerSix" style="display: none; flex-direction: column;">Граф:<br />Так. Сигари та цигарки.</p>
+
 
         <div id="actions" style="display: none; flex-direction: column;">
-            <button>Action 1</button>
-            <button>Action 2</button> <!-- тут варіанти вибору -->
-            <button>Action 3</button>
+
+
+            <button id="QOne" onclick="showQOne()" style=" flex-direction: column;">Ви обізнані в тому, ким була жертва?</button>
+
+            <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column;">Ви були коли-небудь в Америці?</button>
+            <div id="actionTwo" style=" display: none; position: relative; flex-direction: column;">
+                <button id="QTwoOne" onclick="showQTwoOne()" style=" flex-direction: column;">Ви чули, напевно, про сім'ю Армстронгів, мсьє?</button>
+            </div>
+
+            <button id="QThree" onclick="showQThree()" style=" flex-direction: column;">Ви пішли відпочивати – о котрій годині?</button>
+
+            <button id="QFour" onclick="showQFour()" style=" flex-direction: column;">Ви помітили, як зупинився потяг?</button>
+
+            <button id="QFive" onclick="showQFive()" style=" flex-direction: column;">Мадам, ці дані – ваше дівоче прізвище, усе інше – вони правильні?</button>
+
+            <button id="QSix" onclick="showQSix()" style=" flex-direction: column;">Мсьє, ви курите?</button>
+
         </div>
     </div>
+
 
     
     <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="yourButtonClickFunction()">

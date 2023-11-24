@@ -20,6 +20,6 @@ public class TextGameApplication {
 
 	@GetMapping
 	public String welcome(){
-		return "character1";
+		return "character8";
 	}
 }

@@ -95,31 +95,92 @@
         button:hover {
             background-color: #555;
         }
-    </style> 
+    </style>
     <script>
         function showButtons() {
             document.getElementById("text").style.display = "none";
+            document.getElementById("textOne").style.display = "none";
             document.getElementById("showActionsBtn").style.display = "none";
             document.getElementById("actions").style.display = "flex";
+        }
+        function showQOne() {
+            document.getElementById("QOne").style.display = "none";
+            document.getElementById("answerOne").style.display = "initial";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQTwo() {
+            document.getElementById("QTwo").style.display = "none";
+            document.getElementById("answerTwo").style.display = "initial";
+            document.getElementById("actionTwo").style.display = "flex";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQTwoOne() {
+            document.getElementById("QTwoOne").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThree() {
+            document.getElementById("QThree").style.display = "none";
+            document.getElementById("answerThree").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQFour() {
+            document.getElementById("QFour").style.display = "none";
+            document.getElementById("answerFour").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
         }
     </script>
 </head>
 
 <body>
 
+
     <div id="left">
-        <!-- a th:href="@{/order/list}"-->
         <img src="character1.png" alt="Background Image" style="max-width: 100%; max-height: 100%;">
     </div>
 
     <div id="right">
-        <p id="text"> text .</p> <!-- тут текст -->
-        <button id="showActionsBtn" onclick="showButtons()">Показати дії</button>
+        <h1 id="text">секретар вбитого - МакКвінн</h1>
+        <h2 id="textOne"> опис </h2>
+        <button id="showActionsBtn" onclick="showButtons()">Спитати</button>
+
+        <p id="answerOne" style="display: none; flex-direction: column;" >Клятий мерзотник! Якби знав, то відтяв би собі правицю перед тим, як стати його секретарем! Мій батько був прокурором, який вів дану справу, містере Пуаро. Я бачив місіс Армстронг лише один раз – вона була чарівною жінкою. Приємна і з розбитим серцем. – Він спохмурнів. – Ця людина – Ретчетт або Касетті – отримала своє. Я радий його смерті. Такі люди не повинні жити.</p>
+        <p id="answerTwo"  style="display: none; flex-direction: column;">Це просто. Спершу я повернувся в своє купе, трішки почитав, вийшов на платформу у Белграді. Там було дуже холодно, тому я швидко повернувся назад. Я перекинувся декількома слова з молодою леді з Англії, яка розташовується в купе біля мого. Потім я поговорив з англійцем, полковником Арбетнотом – доказом цього є те, що ви особисто нас бачили. Потім я зайшов до містера Ретчетта і, як я вже казав, пішов писати листи, які потрібно було надіслати. Я побажав йому гарної ночі та пішов. Полковник Арбетнот стояв у коридорі. Його купе було підготоване до сну, тому я запропонував піти до мене. Я замовив кілька склянок алкоголю для нас. Ми балакали про політику, індійський уряд та інші проблеми – Сухий закон в США та Велику кризу. Я взагалі-то не сильно полюбляю британців – вони дуже зарозумілі – але не цей. Він відійшов дуже пізно. Десь близько другої години.</p>
+        <p id="answerTwoOne"  style="display: none; flex-direction: column;">Думаю, що провідник проходив, з вагону-ресторану. В інший бік йшла жінка, яка  – не можу сказати. Я її не помітив. Розумієте, ми з полковником сперечалися. Я лише помітив проблиск багряного шовку, який промайнув крізь двері. Я не дивився туди, тому й не помітив її обличчя. Як вам відомо, після мого купе знаходиться вагон-ресторан, тому жінка, яка йшла, повинна була б повернутися назад. Чесно кажучи, цього я не бачив.</p>
+        <p id="answerThree"  style="display: none; flex-direction: column;">О, так. Я дещо здивувалися. Я виглянув та побачив велику товщу снігу, але не думав, що це серйозно.</p>
+        <p id="answerFour" style="display: none; flex-direction: column;">Ні, сер, не курю.</p>
+
 
         <div id="actions" style="display: none; flex-direction: column;">
-            <button>Action 1</button>
-            <button>Action 2</button> <!-- тут варіанти вибору -->
-            <button>Action 3</button>
+            <button id="QOne" onclick="showQOne()" style=" flex-direction: column; ">Ви здогадувалися про те, що справжнє прізвище Ретчетта – Касетті, що відомий викраденням маленьких дітей, серед яких – Дейзі Армстронг?</button>
+
+
+            <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column; ">Розкажіть про всі свої дії минулої ночі, після того, як ви покинули вагон-ресторан.</button>
+            <div id="actionTwo" style=" display: none; position: relative; flex-direction: column; ">
+                <button id="QTwoOne" onclick="showQTwoOne()" style=" flex-direction: column; ">Коли ви сиділи з полковником Арбетнотом і балакали, двері вашого купе були відчинені, так? Скажіть, хто проходив коридором після того, як потяг покинув Вінковці і до того, як ви пішли спати?</button>
+            </div>
+
+            <button id="QThree" onclick="showQThree()" style=" flex-direction: column; ">Ви помітили, що поїзд зупинився?</button>
+
+
+            <button id="QFour" onclick="showQFour()" style=" flex-direction: column;">Ви курите трубку?</button>
+
+
         </div>
     </div>
 

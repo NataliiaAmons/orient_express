@@ -99,9 +99,53 @@
     <script>
         function showButtons() {
             document.getElementById("text").style.display = "none";
+            document.getElementById("textOne").style.display = "none";
             document.getElementById("showActionsBtn").style.display = "none";
             document.getElementById("actions").style.display = "flex";
         }
+        function showQOne() {
+            document.getElementById("QOne").style.display = "none";
+            document.getElementById("answerOne").style.display = "initial";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+
+        function showQTwo() {
+            document.getElementById("QTwo").style.display = "none";
+            document.getElementById("answerTwo").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThree() {
+            document.getElementById("QThree").style.display = "none";
+            document.getElementById("answerThree").style.display = "initial";
+            document.getElementById("actionThree").style.display = "flex";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThreeOne() {
+            document.getElementById("QThreeOne").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQFour() {
+            document.getElementById("QFour").style.display = "none";
+            document.getElementById("answerFour").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+        }
+
     </script>
 </head>
 
@@ -112,16 +156,34 @@
     </div>
 
     <div id="right">
-        <p id="text"> text .</p> <!-- тут текст -->
-        <button id="showActionsBtn" onclick="showButtons()">Показати дії</button>
+        <h1 id="text"> Мері Дебенхем</h1>
+        <h2 id="textOne"> опис </h2>
+        <button id="showActionsBtn" onclick="showButtons()">Спитати</button>
+
+        <p id="answerOne" style="display: none; flex-direction: column;"> Боюся, що нічого особливого. Я пішла до себе та спала. </p>
+        <p id="answerTwo" style="display: none; flex-direction: column;"> Вперше я його побачила лише вчора під час обіду. </p>
+        <p id="answerThree" style="display: none; flex-direction: column;">Жахливий випадок.</p>
+        <p id="answerThreeOne" style="display: none; flex-direction: column;"> Ні, не знала. Важко в це повірити. </p>
+        <p id="answerFour" style="display: none; flex-direction: column;"> У мене лише один, блідо-ліловий.</p>
+
 
         <div id="actions" style="display: none; flex-direction: column;">
-            <button>Action 1</button>
-            <button>Action 2</button> <!-- тут варіанти вибору -->
-            <button>Action 3</button>
+
+
+            <button id="QOne" onclick="showQOne()" style=" flex-direction: column;">Що ви можете розповісти нам про події минулої ночі?</button>
+
+            <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column;">Ви не були знайомі з небіжчиком?</button>
+
+            <button id="QThree" onclick="showQThree()" style=" flex-direction: column;">Що ви думаєте про випадок Армстронгів?</button>
+            <div id="actionThree" style="display: none; flex-direction: column;">
+                <button id="QThreeOne" onclick="showQThreeOne()" style=" flex-direction: column;">Чи знали ви, що людиною, що викрала Дейзі Армстронг був Ретчетт? Його справжнє прізвище - Касетті.</button>
+            </div>
+
+            <button id="QFour" onclick="showQFour()" style=" flex-direction: column; ">Якого кольору ваш халат?</button>
+
+
         </div>
     </div>
-
 
 
     <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="yourButtonClickFunction()">
