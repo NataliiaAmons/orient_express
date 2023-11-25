@@ -13,13 +13,19 @@ public class TextGameApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TextGameApplication.class, args);
 	}
-	//@GetMapping
-	public String hello(){
-		return "Hello World!";
+
+	@GetMapping("/")
+	public String dialog(){
+		return "killer";
 	}
 
-	@GetMapping
-	public String welcome(){
-		return "character8";
+	@GetMapping("Character1.html")
+	public String character1(){
+		return "character1";
+	}
+
+	@GetMapping("killer.html")
+	public String killer(){
+		return "killer";
 	}
 }

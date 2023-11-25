@@ -97,11 +97,25 @@
         }
     </style>
     <script>
+
+        var sleepingPills = false;
+        var letter = false;
+        var smokingPipeBrush = false;
+
         function showButtons() {
             document.getElementById("text").style.display = "none";
             document.getElementById("textOne").style.display = "none";
             document.getElementById("showActionsBtn").style.display = "none";
             document.getElementById("actions").style.display = "flex";
+            if(sleepingPills==false){
+                document.getElementById("QTwo").style.display = "none";
+            }
+            if(letter==false){
+                document.getElementById("QFive").style.display = "none";
+            }
+            if(smokingPipeBrush==false){
+                document.getElementById("QEight").style.display = "none";
+            }
         }
         function showQOne() {
             document.getElementById("QOne").style.display = "none";
