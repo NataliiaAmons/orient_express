@@ -16,7 +16,7 @@ public class TextGameApplication {
 		SpringApplication.run(TextGameApplication.class, args);
 	}
 
-	@GetMapping("/")
+	//@GetMapping("/")
 	// function to check if getting characters and questions from file works correctly
 	public String getCharacters() throws IOException {
 	 Character[] characters = new Character().getCharactersFromFile();
@@ -38,9 +38,9 @@ public class TextGameApplication {
 		return "TEST";
 	}
 
-	//@GetMapping("/")
+	@GetMapping("/")
 	public String character1(){
-		return "killer";
+		return "character8";
 	}
 
 	//@GetMapping("killer.html")
