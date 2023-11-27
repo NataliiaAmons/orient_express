@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Помилка</title>
+  <style>
+
+        body {
+            position: relative;
+            background: url('good.jpg') center/cover no-repeat;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            z-index: -1;
+            filter: blur(5px);
+
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: black;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Вітаю, Ви зробили правильний вибір та вигралали. <br> Ви хороший детектив, так тримати!😀</h1>
+</body>
+
+</html>
