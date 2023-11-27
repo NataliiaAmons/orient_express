@@ -97,11 +97,17 @@
         }
     </style>
     <script>
+
+        var letter = false;
+
         function showButtons() {
             document.getElementById("text").style.display = "none";
             document.getElementById("textOne").style.display = "none";
             document.getElementById("showActionsBtn").style.display = "none";
             document.getElementById("actions").style.display = "flex";
+            if(letter==false){
+                document.getElementById("QThree").style.display = "none";
+            }
         }
         function showQOne() {
             document.getElementById("QOne").style.display = "none";

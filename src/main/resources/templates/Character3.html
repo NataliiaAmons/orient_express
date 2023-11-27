@@ -97,11 +97,21 @@
         }
     </style>
     <script>
+
+        var letter = false;
+        var handkerchief = false;
+
         function showButtons() {
             document.getElementById("text").style.display = "none";
             document.getElementById("textOne").style.display = "none";
             document.getElementById("showActionsBtn").style.display = "none";
             document.getElementById("actions").style.display = "flex";
+            if(letter==false){
+                document.getElementById("QTwo").style.display = "none";
+            }
+            if(handkerchief==false){
+                document.getElementById("QFour").style.display = "none";
+            }
         }
         function showQOne() {
             document.getElementById("QOne").style.display = "none";
@@ -111,6 +121,7 @@
             document.getElementById("answerTwoTwo").style.display = "none";
             document.getElementById("answerThree").style.display = "none";
             document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFourOne").style.display = "none";
         }
         function showQTwo() {
             document.getElementById("QTwo").style.display = "none";
@@ -121,6 +132,7 @@
             document.getElementById("answerTwoTwo").style.display = "none";
             document.getElementById("answerThree").style.display = "none";
             document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFourOne").style.display = "none";
         }
         function showQTwoOne() {
             document.getElementById("QTwoOne").style.display = "none";
@@ -130,6 +142,7 @@
             document.getElementById("answerTwoTwo").style.display = "none";
             document.getElementById("answerThree").style.display = "none";
             document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFourOne").style.display = "none";
         }
         function showQTwoTwo() {
             document.getElementById("QTwoTwo").style.display = "none";
@@ -139,6 +152,7 @@
             document.getElementById("answerTwoOne").style.display = "none";
             document.getElementById("answerThree").style.display = "none";
             document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFourOne").style.display = "none";
         }
         function showQThree() {
             document.getElementById("QThree").style.display = "none";
@@ -148,15 +162,29 @@
             document.getElementById("answerTwoOne").style.display = "none";
             document.getElementById("answerTwoTwo").style.display = "none";
             document.getElementById("answerFour").style.display = "none";
+            document.getElementById("answerFourOne").style.display = "none";
         }
         function showQFour() {
             document.getElementById("QFour").style.display = "none";
             document.getElementById("answerFour").style.display = "initial";
+            document.getElementById("actionFour").style.display = "flex";
             document.getElementById("answerOne").style.display = "none";
             document.getElementById("answerTwo").style.display = "none";
             document.getElementById("answerTwoOne").style.display = "none";
             document.getElementById("answerTwoTwo").style.display = "none";
             document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFourOne").style.display = "none";
+        }
+        function showQFourOne() {
+            document.getElementById("QFourOne").style.display = "none";
+            document.getElementById("knife").style.display = "initial";
+            document.getElementById("answerFourOne").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerTwoOne").style.display = "none";
+            document.getElementById("answerTwoTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
         }
     </script>
 </head>
@@ -178,6 +206,8 @@
         <p id="answerTwoTwo" style="display: none; flex-direction: column;">Ні. Вони крутилися у вищих колах. Але я завжди чула, що місіс Армстронг була дуже люблячою жінкою і що її чоловік обожнював.</p>
         <p id="answerThree" style="display: none; flex-direction: column;">Дуже дивне запитання! Але ні. У мене є два халати – рожевий фланелевий, зручний для морських подорожей, а інший моя дочка подарувала – з місцевого пурпурового шовку.</p>
         <p id="answerFour" style="display: none; flex-direction: column;">Це не мій містере Пуаро. На моїх вишиті C.M.H., і вони зручніші – не такі дорогі, як ці паризькі. Чий ніс може дозволити собі такі носовички?</p>
+        <img id="knife" src="knife.png" alt="Evidence Image" style=" display: none; flex-direction: column; max-width: 10%; max-height: 10%;">
+        <p id="answerFourOne" style="display: none; flex-direction: column;">* Вона відкриває свою сумочку, ви бачите там канджал. Ви не одні не очікували там його побачити. Місіс Хаббард виглядає надзвичайно спантеличеною і переляканою *<br />О Боже, що це таке? Звідки воно тут?</p>
 
         <div id="actions" style="display: none; flex-direction: column;">
 
@@ -192,6 +222,11 @@
             <button id="QThree" onclick="showQThree()" style=" flex-direction: column;">У вас є багряний шовковий халат?</button>
 
             <button id="QFour" onclick="showQFour()" style=" flex-direction: column;">Це не ваш носовичок, мадам?</button>
+            <div id="actionFour" style=" display: none; position: relative; flex-direction: column;">
+                <button id="QFourOne" onclick="showQFourOne()" style=" flex-direction: column;">Тоді не могли б ви показати мені свого?</button>
+            </div>
+
+
 
         </div>
     </div>
