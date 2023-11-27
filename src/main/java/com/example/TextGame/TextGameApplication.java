@@ -3,6 +3,7 @@ package com.example.TextGame;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
@@ -14,6 +15,20 @@ public class TextGameApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TextGameApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public String helloWorld(Model model) throws IOException {
+		Character[] characters = new Character().getCharactersFromFile();
+		Character character3 = characters[2];
+
+		model.addAttribute("character", character3);
+
+		String letter = "found";
+		model.addAttribute("letter", letter);
+
+
+		return "character3";
 	}
 
 	//@GetMapping("/")
@@ -38,7 +53,7 @@ public class TextGameApplication {
 		return "TEST";
 	}
 
-	@GetMapping("/")
+	//@GetMapping("/")
 	public String character1(){
 		return "character8";
 	}

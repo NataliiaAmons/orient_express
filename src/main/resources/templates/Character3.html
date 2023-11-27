@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -96,108 +96,107 @@
             background-color: #555;
         }
     </style>
-    <script>
+    <script th:inline="javascript">
 
+   var handkerchief = false;
 
-        var handkerchief = false;
-
-        function showButtons() {
-            document.getElementById("text").style.display = "none";
-            document.getElementById("textOne").style.display = "none";
-            document.getElementById("showActionsBtn").style.display = "none";
-            document.getElementById("actions").style.display = "flex";
-            if(letter==false){
-                document.getElementById("QTwo").style.display = "none";
-            }
-            if(handkerchief==false){
-                document.getElementById("QFour").style.display = "none";
-            }
-        }
-        function showQOne() {
-            document.getElementById("QOne").style.display = "none";
-            document.getElementById("answerOne").style.display = "initial";
-            document.getElementById("answerTwo").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "none";
-            document.getElementById("answerThree").style.display = "none";
-            document.getElementById("answerFour").style.display = "none";
-            document.getElementById("answerFourOne").style.display = "none";
-        }
-        function showQTwo() {
-            document.getElementById("QTwo").style.display = "none";
-            document.getElementById("answerTwo").style.display = "initial";
-            document.getElementById("actionTwo").style.display = "flex";
-            document.getElementById("answerOne").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "none";
-            document.getElementById("answerThree").style.display = "none";
-            document.getElementById("answerFour").style.display = "none";
-            document.getElementById("answerFourOne").style.display = "none";
-        }
-        function showQTwoOne() {
-            document.getElementById("QTwoOne").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "initial";
-            document.getElementById("answerOne").style.display = "none";
-            document.getElementById("answerTwo").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "none";
-            document.getElementById("answerThree").style.display = "none";
-            document.getElementById("answerFour").style.display = "none";
-            document.getElementById("answerFourOne").style.display = "none";
-        }
-        function showQTwoTwo() {
-            document.getElementById("QTwoTwo").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "initial";
-            document.getElementById("answerOne").style.display = "none";
-            document.getElementById("answerTwo").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "none";
-            document.getElementById("answerThree").style.display = "none";
-            document.getElementById("answerFour").style.display = "none";
-            document.getElementById("answerFourOne").style.display = "none";
-        }
-        function showQThree() {
-            document.getElementById("QThree").style.display = "none";
-            document.getElementById("answerThree").style.display = "initial";
-            document.getElementById("answerOne").style.display = "none";
-            document.getElementById("answerTwo").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "none";
-            document.getElementById("answerFour").style.display = "none";
-            document.getElementById("answerFourOne").style.display = "none";
-        }
-        function showQFour() {
-            document.getElementById("QFour").style.display = "none";
-            document.getElementById("answerFour").style.display = "initial";
-            document.getElementById("actionFour").style.display = "flex";
-            document.getElementById("answerOne").style.display = "none";
-            document.getElementById("answerTwo").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "none";
-            document.getElementById("answerThree").style.display = "none";
-            document.getElementById("answerFourOne").style.display = "none";
-        }
-        function showQFourOne() {
-            document.getElementById("QFourOne").style.display = "none";
-            document.getElementById("knife").style.display = "initial";
-            document.getElementById("answerFourOne").style.display = "initial";
-            document.getElementById("answerOne").style.display = "none";
-            document.getElementById("answerTwo").style.display = "none";
-            document.getElementById("answerTwoOne").style.display = "none";
-            document.getElementById("answerTwoTwo").style.display = "none";
-            document.getElementById("answerThree").style.display = "none";
-            document.getElementById("answerFour").style.display = "none";
-        }
+                function showButtons() {
+                    document.getElementById("text").style.display = "none";
+                    document.getElementById("textOne").style.display = "none";
+                    document.getElementById("showActionsBtn").style.display = "none";
+                    document.getElementById("actions").style.display = "flex";
+                    if(photo=="character3.png"){
+                        document.getElementById("QTwo").style.display = "none";
+                    }
+                    if(handkerchief==false){
+                        document.getElementById("QFour").style.display = "none";
+                    }
+                }
+                function showQOne() {
+                    document.getElementById("QOne").style.display = "none";
+                    document.getElementById("answerOne").style.display = "initial";
+                    document.getElementById("answerTwo").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "none";
+                    document.getElementById("answerThree").style.display = "none";
+                    document.getElementById("answerFour").style.display = "none";
+                    document.getElementById("answerFourOne").style.display = "none";
+                }
+                function showQTwo() {
+                    document.getElementById("QTwo").style.display = "none";
+                    document.getElementById("answerTwo").style.display = "initial";
+                    document.getElementById("actionTwo").style.display = "flex";
+                    document.getElementById("answerOne").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "none";
+                    document.getElementById("answerThree").style.display = "none";
+                    document.getElementById("answerFour").style.display = "none";
+                    document.getElementById("answerFourOne").style.display = "none";
+                }
+                function showQTwoOne() {
+                    document.getElementById("QTwoOne").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "initial";
+                    document.getElementById("answerOne").style.display = "none";
+                    document.getElementById("answerTwo").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "none";
+                    document.getElementById("answerThree").style.display = "none";
+                    document.getElementById("answerFour").style.display = "none";
+                    document.getElementById("answerFourOne").style.display = "none";
+                }
+                function showQTwoTwo() {
+                    document.getElementById("QTwoTwo").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "initial";
+                    document.getElementById("answerOne").style.display = "none";
+                    document.getElementById("answerTwo").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "none";
+                    document.getElementById("answerThree").style.display = "none";
+                    document.getElementById("answerFour").style.display = "none";
+                    document.getElementById("answerFourOne").style.display = "none";
+                }
+                function showQThree() {
+                    document.getElementById("QThree").style.display = "none";
+                    document.getElementById("answerThree").style.display = "initial";
+                    document.getElementById("answerOne").style.display = "none";
+                    document.getElementById("answerTwo").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "none";
+                    document.getElementById("answerFour").style.display = "none";
+                    document.getElementById("answerFourOne").style.display = "none";
+                }
+                function showQFour() {
+                    document.getElementById("QFour").style.display = "none";
+                    document.getElementById("answerFour").style.display = "initial";
+                    document.getElementById("actionFour").style.display = "flex";
+                    document.getElementById("answerOne").style.display = "none";
+                    document.getElementById("answerTwo").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "none";
+                    document.getElementById("answerThree").style.display = "none";
+                    document.getElementById("answerFourOne").style.display = "none";
+                }
+                function showQFourOne() {
+                    document.getElementById("QFourOne").style.display = "none";
+                    document.getElementById("knife").style.display = "initial";
+                    document.getElementById("answerFourOne").style.display = "initial";
+                    document.getElementById("answerOne").style.display = "none";
+                    document.getElementById("answerTwo").style.display = "none";
+                    document.getElementById("answerTwoOne").style.display = "none";
+                    document.getElementById("answerTwoTwo").style.display = "none";
+                    document.getElementById("answerThree").style.display = "none";
+                    document.getElementById("answerFour").style.display = "none";
+                }
     </script>
 </head>
 
 <body>
 
     <div id="left">
-        <img src="character3.png" alt="Background Image" style="max-width: 100%; max-height: 100%;">
+        <img th:src="${character.photo}" alt="Background Image" style="max-width: 100%; max-height: 100%;">
     </div>
 
     <div id="right">
-        <h1 id="text">місіс Хаббард</h1>
-        <h2 id="textOne"> опис </h2>
+        <h1 th:text="${character.name}" id ="text">name</h1>
+        <h2 th:text="${character.info}" id="textOne">info</h2>
         <button id="showActionsBtn" onclick="showButtons()">Спитати</button>
 
         <p id="answerOne" style="display: none; flex-direction: column;">Нічого особливого не чула. Але вранці я знайшла ґудзик. Це не мій. У мене таких немає. Я читала журнал минулої ночі, перед тим, як лягати спати. Перед тим, як вимкнути світло, я поклала журнал на невеличку коробку, що стояла на підлозі поблизу вікна. Провідник не підходив до вікна ввечері. Зрештою, вранці я помітила ґудзик справа від журналу. </p>
@@ -211,8 +210,9 @@
 
         <div id="actions" style="display: none; flex-direction: column;">
 
-            <button id="QOne" onclick="showQOne()" style=" flex-direction: column;">Ви щось чули уночі?</button>
-
+            <div th:if="'found' == ${letter}">
+            <button id="QOne" onclick="showQOne()" th:text="${character.questions.get(0).questionText}" style=" flex-direction: column;">question1</button>
+            </div>
             <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column;"> Ви ж американка, місіс Хаббард? Пам'ятаєте справу із викраденням дитини Армстронгів?</button>
             <div id="actionTwo" style=" display: none; position: relative; flex-direction: column;">
                 <button id="QTwoOne" onclick="showQTwoOne()" style=" flex-direction: column;">Він не уникнув. Він помер. Помер минулої ночі. Цією людиною був Ретчетт.</button>

@@ -59,7 +59,7 @@ public class Character {
     // number; name; photo; info
     // you can get questions from another file with Question().getQuestionsFromFile() method
      public Character[] getCharactersFromFile() throws IOException {
-        Resource resource = new ClassPathResource("static/characters.txt");
+        Resource resource = new ClassPathResource("static/characters.csv");
         File file = resource.getFile();
         BufferedReader reader = null;
         String line = "";

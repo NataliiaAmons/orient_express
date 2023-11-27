@@ -61,7 +61,7 @@ public class Question {
     // in file data is written like:
     // character number; number; question text; answer; previos number (0 if none)
     public Question[] getQuestionsFromFile() throws IOException {
-        Resource resource = new ClassPathResource("static/questions.txt");
+        Resource resource = new ClassPathResource("static/questions.csv");
         File file = resource.getFile();
         BufferedReader reader = null;
         String line = "";
@@ -90,10 +90,7 @@ public class Question {
             e.printStackTrace();
         }
         finally {
-            try {
-                reader.close();
-            }
-            catch (IOException e) {}
+            reader.close();
         }
         return questions.toArray(new Question[0]);
     }
