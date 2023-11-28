@@ -1,4 +1,4 @@
-package com.example.TextGame;
+package com.example.TextGame.domain;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;

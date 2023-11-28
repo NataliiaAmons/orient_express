@@ -3,28 +3,29 @@ package com.example.TextGame;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 @SpringBootApplication
 @Controller
 public class TextGameApplication {
 
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(TextGameApplication.class, args);
 	}
 
+
+
+/*
 	@GetMapping("/")
 	public String helloWorld(Model model) throws IOException {
-		Character[] characters = new Character().getCharactersFromFile();
+		Character[] characters = characterRepository.getCharactersFromFile();
 		Character character3 = characters[2];
 
 		model.addAttribute("character", character3);
 
-		String letter = "found";
+		String letter = "not found";
 		model.addAttribute("letter", letter);
 
 
@@ -48,17 +49,14 @@ public class TextGameApplication {
 		return "TEST";
 	}
 
-	public String dialog(){
-		System.out.print("TEST");
-		return "TEST";
-	}
+*/
 
-	//@GetMapping("/")
+	@GetMapping("/")
 	public String character1(){
-		return "character8";
+		return "killer";
 	}
 
-	//@GetMapping("killer.html")
+	@GetMapping("killer.html")
 	public String killer(){
 		return "killer";
 	}
