@@ -15,7 +15,7 @@ public class QuestionRepository extends FileRepository{
         int i = 1;
         while (true) {
             Question question = getQuestionFromFile(i);
-            if(question == null){
+            if(question.getCharacter() == 0){
                 break;
             }
             allQuestions.add(question);
@@ -30,7 +30,7 @@ public class QuestionRepository extends FileRepository{
         String line = "";
         while ((line = reader.readLine()) != null){
             String[] row = line.split(";");
-            if (Integer.valueOf(row[0]) == questionNumber) {
+            if (Integer.valueOf(row[1]) == questionNumber) {
                 question.setCharacter(Integer.valueOf(row[0]));
                 question.setNumber(Integer.valueOf(row[1]));
                 question.setEvidenceNeeded(row[2]);
@@ -39,6 +39,12 @@ public class QuestionRepository extends FileRepository{
                 question.setPrevious(Integer.valueOf(row[5]));
             }
         }
+        try {
+            reader.close();
+        }
+        catch (IOException e) {}
         return question;
     }
+
+
 }

@@ -1,8 +1,20 @@
 package com.example.TextGame.domain;
 
+import com.example.TextGame.dao.QuestionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Character {
+
+    @Autowired
+    private QuestionRepository questionRepository;
     private int number;
     private String name;
     private String photo;
@@ -47,17 +59,8 @@ public class Character {
         }
     }
 
-    public void setQuestions(){
-        ArrayList<Question> allQuestions = getQuestions();
-        ArrayList<Question> questions = new ArrayList<>();
-        int i=0;
-        while(this.number == allQuestions.get(i).getCharacter()){
-            questions.add(allQuestions.get(i));
-            i++;
-        }
-    }
 
-    /*
+
     // get characters: their number, name, info, questions you can ask them (class Question)
     // in file data is written like:
     // number; name; photo; info
@@ -108,7 +111,7 @@ public class Character {
         }
         return characters;
     }
-*/
+
 
 
 }

@@ -31,8 +31,7 @@ public class DialogService {
 
     public ArrayList<Question> getQuestion(int characterNumber, int questionNumber) throws IOException {
         Character character = characterRepository.getCharacterFromFile(characterNumber);
-        character.setQuestions();
-        ArrayList<Question>  allCharacterQuestions = questionRepository.getAllQuestions();
+        ArrayList<Question> allCharacterQuestions = setQuestions(characterNumber);
         ArrayList<Question> possibleQuestions = new ArrayList<Question>();
         for(int i=0; i<allCharacterQuestions.size(); i++){
             String evidenceNeeded = allCharacterQuestions.get(i).getEvidenceNeeded();
@@ -43,5 +42,15 @@ public class DialogService {
         return possibleQuestions;
     }
 
+    public ArrayList<Question> setQuestions(int characterNumber) throws IOException {
+        ArrayList<Question> allQuestions = questionRepository.getAllQuestions();
+        ArrayList<Question> questions = new ArrayList<>();
+        for (int i=0; i<allQuestions.size(); i++){
+            if (characterNumber == allQuestions.get(i).getCharacter()) {
+                questions.add(allQuestions.get(i));
+            }
+        }
+        return questions;
+    }
 
 }

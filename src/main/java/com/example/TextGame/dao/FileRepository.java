@@ -23,13 +23,7 @@ public class FileRepository {
         catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            try {
-                reader.close();
-            }
-            catch (IOException e) {}
-        }
-        return reader;
+         return reader;
     }
 }
 

@@ -227,11 +227,11 @@
 
         <div id="actions" style="display: none; flex-direction: column;">
 
-            <div th:if="${character.questions.get(0).evidenceNeeded} == 'null'">
-                <button id="QOne" onclick="showQOne()" th:text="${character.questions.get(0).questionText}" style=" flex-direction: column;">question1</button>
+            <div th:if="${questions.get(0).evidenceNeeded} != 'null'">
+                <button id="QOne" onclick="showQOne()"  style=" flex-direction: column;">question1</button>
             </div>
 
-            <div th:if="${character.questions.get(0).evidenceNeeded} != 'null'">
+            <div th:if="${questions.get(0).evidenceNeeded} == 'null'">
                 <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column;"> Ви ж американка, місіс Хаббард? Пам'ятаєте справу із викраденням дитини Армстронгів?</button>
                 <div id="actionTwo" style=" display: none; position: relative; flex-direction: column;">
                     <button id="QTwoOne" onclick="showQTwoOne()" style=" flex-direction: column;">Він не уникнув. Він помер. Помер минулої ночі. Цією людиною був Ретчетт.</button>

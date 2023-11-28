@@ -25,12 +25,11 @@ public class CharacterRepository extends FileRepository{
         }
         return allCharacters;
     }
-
     public Character getCharacterFromFile(int characterNumber) throws IOException {
         Character character = new Character();
         BufferedReader reader = super.getDataFromFile("static/characters.csv");
         String line = "";
-        if ((line = reader.readLine()) != null){
+        while ((line = reader.readLine()) != null){
             String[] row = line.split(";");
             if (Integer.valueOf(row[0]) == characterNumber) {
                     character.setNumber(Integer.valueOf(row[0]));
@@ -39,8 +38,59 @@ public class CharacterRepository extends FileRepository{
                     character.setInfo(row[3]);
             }
         }
-        else{ return null;}
+            try {
+                reader.close();
+            }
+            catch (IOException e) {}
         return character;
     }
 
+/*
+    public Character[] getCharactersFromFile() throws IOException {
+        Resource resource = new ClassPathResource("static/characters.csv");
+        File file = resource.getFile();
+        BufferedReader reader = null;
+        String line = "";
+
+        Character character1 = new Character();
+        Character character2 = new Character();
+        Character character3 = new Character();
+        Character character4 = new Character();
+        Character character5 = new Character();
+        Character character6 = new Character();
+        Character character7 = new Character();
+        Character character8 = new Character();
+
+        Question[] questions = new Question().getQuestionsFromFile();
+
+        Character[] characters = {character1, character2, character3, character4, character5, character6, character7, character8};
+        int i = 0;
+
+        try {
+            reader = new BufferedReader(new FileReader(file));
+
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(";");
+
+                characters[i].setNumber(Integer.valueOf(row[0]));
+                characters[i].setName(row[1]);
+                characters[i].setPhoto(row[2]);
+                characters[i].setInfo(row[3]);
+                characters[i].setQuestions(questions);
+
+                i++;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                reader.close();
+            }
+            catch (IOException e) {}
+        }
+        return characters;
+    }
+*/
 }
