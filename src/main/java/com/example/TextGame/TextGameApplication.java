@@ -69,9 +69,9 @@ public class TextGameApplication {
 	public String character1(Model model) {
 		try {
 			Character character3 = characterRepository.getCharacterFromFile(3);
-			ArrayList<Question> allCharacterQuestions = dialogService.setQuestions(3);
+			ArrayList<Question> possibleQuestions = dialogService.getPossibleQuestions(3);
 			model.addAttribute("character", character3);
-			model.addAttribute("questions", allCharacterQuestions);
+			model.addAttribute("questions", possibleQuestions);
 
 		}
 		catch(IOException E){}
