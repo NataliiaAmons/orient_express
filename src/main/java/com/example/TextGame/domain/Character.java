@@ -2,13 +2,7 @@ package com.example.TextGame.domain;
 
 import com.example.TextGame.dao.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Character {
@@ -58,60 +52,6 @@ public class Character {
             }
         }
     }
-
-
-
-    // get characters: their number, name, info, questions you can ask them (class Question)
-    // in file data is written like:
-    // number; name; photo; info
-    // you can get questions from another file with Question().getQuestionsFromFile() method
-     public Character[] getCharactersFromFile() throws IOException {
-        Resource resource = new ClassPathResource("static/characters.csv");
-        File file = resource.getFile();
-        BufferedReader reader = null;
-        String line = "";
-
-        Character character1 = new Character();
-        Character character2 = new Character();
-        Character character3 = new Character();
-        Character character4 = new Character();
-        Character character5 = new Character();
-        Character character6 = new Character();
-        Character character7 = new Character();
-        Character character8 = new Character();
-
-        Question[] questions = new Question().getQuestionsFromFile();
-
-        Character[] characters = {character1, character2, character3, character4, character5, character6, character7, character8};
-        int i = 0;
-
-        try {
-            reader = new BufferedReader(new FileReader(file));
-
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(";");
-
-                characters[i].setNumber(Integer.valueOf(row[0]));
-                characters[i].setName(row[1]);
-                characters[i].setPhoto(row[2]);
-                characters[i].setInfo(row[3]);
-                characters[i].setQuestions(questions);
-
-                i++;
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                reader.close();
-            }
-            catch (IOException e) {}
-        }
-        return characters;
-    }
-
 
 
 }

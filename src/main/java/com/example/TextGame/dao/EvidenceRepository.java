@@ -1,26 +1,20 @@
 package com.example.TextGame.dao;
 
+import com.example.TextGame.domain.Evidence;
 import org.springframework.stereotype.Repository;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.util.ArrayList;
 
 @Repository
-public class EvidenceRepository extends FileRepository{
+public class EvidenceRepository {
 
-
-    public String[] getEvidenceFromFile() throws IOException {
-        String[] evidence = new String[0];
-        BufferedReader reader = super.getDataFromFile("static/evidence.csv");
-        String line = "";
-        while ((line = reader.readLine()) != null){
-            evidence = line.split(";");
-            }
-        try {
-            reader.close();
-        }
-        catch (IOException e) {}
-        return evidence;
+    public ArrayList<Evidence> getAllEvidence() {
+        return null;
     }
+
+    public Evidence getEvidenceFromFile() {
+        return null;
+    }
+
 
 }

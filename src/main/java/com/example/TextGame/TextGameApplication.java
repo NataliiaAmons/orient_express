@@ -69,6 +69,7 @@ public class TextGameApplication {
 	public String character1(Model model) {
 		try {
 			Character character3 = characterRepository.getCharacterFromFile(3);
+			ArrayList<Character> allCharacters = characterRepository.getAllCharacters();
 			ArrayList<Question> possibleQuestions = dialogService.getPossibleQuestions(3);
 			model.addAttribute("character", character3);
 			model.addAttribute("questions", possibleQuestions);
@@ -78,7 +79,7 @@ public class TextGameApplication {
 
 		String letter = "not found";
 		model.addAttribute("letter", letter);
-		return "character3";
+		return "character";
 	}
 
 	//@GetMapping("killer.html")

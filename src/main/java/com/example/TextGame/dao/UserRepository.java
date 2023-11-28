@@ -19,16 +19,6 @@ public class UserRepository {
         }
 
         public String getEvidenceStatus(String evidence) throws IOException {
-            String[] allEvidence = evidenceRepository.getEvidenceFromFile();
-            if(evidence.equals(allEvidence[0])){
-                return "found";
-            }
-            if(evidence.equals(allEvidence[1])){
-                return "";
-            }
-            if(evidence.isEmpty()){
-                return "found";
-            }
-            return "found";
+            return "";
         }
 }

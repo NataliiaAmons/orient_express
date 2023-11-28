@@ -1,14 +1,18 @@
 package com.example.TextGame.dao;
 
 import com.example.TextGame.domain.Question;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 @Repository
-public class QuestionRepository extends FileRepository{
+public class QuestionRepository {
 
     public ArrayList<Question> getAllQuestions() throws IOException {
         ArrayList<Question> allQuestions = new ArrayList<>();
@@ -26,7 +30,17 @@ public class QuestionRepository extends FileRepository{
 
     public Question getQuestionFromFile(int questionNumber) throws IOException {
         Question question= new Question();
-        BufferedReader reader = super.getDataFromFile("static/questions.csv");
+
+        Resource resource = new ClassPathResource("static/questions.csv");
+        File file = resource.getFile();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
         String line = "";
         while ((line = reader.readLine()) != null){
             String[] row = line.split(";");

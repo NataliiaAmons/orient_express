@@ -1,14 +1,5 @@
 package com.example.TextGame.domain;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class Question {
     private int character;
     private int number;
@@ -57,41 +48,5 @@ public class Question {
         this.previous = p;
     }
 
-    // get questions: their numbers, text, answers, character, previous question (qestion after which they appear)
-    // in file data is written like:
-    // character number; number; question text; answer; previos number (0 if none)
-    public Question[] getQuestionsFromFile() throws IOException {
-        Resource resource = new ClassPathResource("static/questions.csv");
-        File file = resource.getFile();
-        BufferedReader reader = null;
-        String line = "";
 
-        ArrayList<Question> questions = new ArrayList<Question>();
-
-        int i = 0;
-
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(";");
-
-                Question question = new Question();
-                question.setCharacter(Integer.valueOf(row[0]));
-                question.setNumber(Integer.valueOf(row[1]));
-                question.setEvidenceNeeded(row[2]);
-                question.setQuestionText(row[3]);
-                question.setAnswer(row[4]);
-                question.setPrevious(Integer.valueOf(row[5]));
-
-                questions.add(question);
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            reader.close();
-        }
-        return questions.toArray(new Question[0]);
-    }
 }
