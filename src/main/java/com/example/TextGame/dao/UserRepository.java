@@ -1,11 +1,12 @@
 package com.example.TextGame.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -47,10 +48,10 @@ public class UserRepository {
     public ArrayList<Integer> getFoundEvidence(String username) throws IOException {
         ArrayList<Integer> foundEvidence = new ArrayList<>();
 
-        Path evidence_path = this.workingDir.resolve(username + "evidence.csv");
+        Path questions_path = this.workingDir.resolve(username + "evidence.csv");
         BufferedReader reader = null;
         try {
-            reader = Files.newBufferedReader(evidence_path);
+            reader = Files.newBufferedReader(questions_path);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -99,14 +100,12 @@ public class UserRepository {
 
 
     public ArrayList<Integer> getAskedQuestions(String username) throws IOException {
-        String evidence_path = "src/main/resources/static/users/" + username + "evidence.csv";
         ArrayList<Integer> askedQuestions = new ArrayList<>();
 
-        Resource resource = new ClassPathResource(evidence_path);
-        File file = resource.getFile();
+        Path evidence_path = this.workingDir.resolve(username + "questions.csv");
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(file));
+            reader = Files.newBufferedReader(evidence_path);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -115,7 +114,7 @@ public class UserRepository {
         String line = "";
         while ((line = reader.readLine()) != null){
             String[] row = line.split(";");
-            askedQuestions.add(Integer.valueOf(0));
+            askedQuestions.add(Integer.valueOf(row[0]));
         }
         try {
             reader.close();
@@ -125,14 +124,13 @@ public class UserRepository {
     }
 
     public ArrayList<String[]> getAskedQuestionsWithData(String username) throws IOException {
-        String evidence_path = "src/main/resources/static/users/" + username + "evidence.csv";
         ArrayList<String[]> askedQuestions = new ArrayList<>();
 
-        Resource resource = new ClassPathResource(evidence_path);
-        File file = resource.getFile();
+        Path questions_path = this.workingDir.resolve(username + "questions.csv");
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(file));
+            reader = Files.newBufferedReader(questions_path);
+
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -142,9 +140,7 @@ public class UserRepository {
         String line = "";
         while ((line = reader.readLine()) != null){
             String[] row = line.split(";");
-            question[0] = row[0];
-            question[1] = row[1];
-            askedQuestions.add(question);
+            askedQuestions.add(row);
         }
         try {
             reader.close();
@@ -156,14 +152,12 @@ public class UserRepository {
 
 
     public void addQuestionToAsked(String username, int questionNumber) throws IOException {
-        String evidence_path = "src/main/resources/static/users/" + username + "evidence.csv";
         ArrayList<String[]> askedQuestions = getAskedQuestionsWithData(username);
 
-        Resource resource = new ClassPathResource(evidence_path);
+        Path questions_path = this.workingDir.resolve(username + "questions.csv");
         BufferedReader reader = null;
         try {
-            File file = resource.getFile();
-            reader = new BufferedReader(new FileReader(file));
+            reader = Files.newBufferedReader(questions_path);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -171,20 +165,23 @@ public class UserRepository {
 
         BufferedWriter writer = null;
         try {
-            FileWriter file = new FileWriter(evidence_path);
-            writer = new BufferedWriter(file);
+            writer = Files.newBufferedWriter(questions_path);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 
-        String line = reader.readLine();
-        for (int i=0; i<askedQuestions.size(); i++){
-            writer.write(askedQuestions.get(i)[0]+";"+askedQuestions.get(i)[0]);
-            writer.newLine();
+        String line = "";
+        for (int i = 0; i < askedQuestions.size(); i++) {
+            String str = askedQuestions.get(i)[0];
+            if (questionNumber != Integer.valueOf(askedQuestions.get(i)[0])){
+                line += askedQuestions.get(i)[0] + ";" + askedQuestions.get(i)[1] + "\n";
+            }
         }
-        LocalDateTime data = LocalDateTime.now();
-        writer.write(questionNumber+";"+String.valueOf(data));
+        String str = String.valueOf(questionNumber);
+        line += String.valueOf(questionNumber) + ";" + String.valueOf(LocalDateTime.now());
+
+        writer.write(line);
         try {
             reader.close();
             writer.close();
