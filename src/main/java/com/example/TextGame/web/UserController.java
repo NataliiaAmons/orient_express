@@ -48,9 +48,15 @@ public class UserController {
         }
     }
     @PostMapping("/Describe")
-    public String sdf(Model model, @RequestParam("username") String username) {
-        System.out.println("coming in controller    " +username );
+    public String sdf(Model model, @RequestParam("username") String username) throws IOException {
         model.addAttribute("message", "Hello Spring MVC Framework!");
+
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        CurrentSessionService.addUsernameToSession(request, username);
+        String name = CurrentSessionService.getUsername(request);
+        userService.createUserFiles(username);
+
+        System.out.println("username saved: " +username );
         return"Describe";
     }
     @PostMapping("/error")
