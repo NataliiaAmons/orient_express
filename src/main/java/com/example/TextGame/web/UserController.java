@@ -1,7 +1,6 @@
 package com.example.TextGame.web;
 
 import com.example.TextGame.dao.UserRepository;
-import com.example.TextGame.domain.User;
 import com.example.TextGame.service.CurrentSessionService;
 import com.example.TextGame.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -22,15 +23,14 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-    //@GetMapping("/")
+    @GetMapping("/")
     public String main(Model model){
 
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", "user name");
         return "main";
     }
 
-    @GetMapping("/")
+    //@GetMapping("/")
     public String setUsername() throws IOException {//@ModelAttribute("user") User user){
         //String username = user.getUsername();
 
@@ -47,9 +47,15 @@ public class UserController {
             return "Describe";
         }
     }
-   // @GetMapping("/Describe")
-    public String sdf(){
-        return "Describe";
+    @PostMapping("/Describe")
+    public String sdf(Model model, @RequestParam("username") String username) {
+        System.out.println("coming in controller    " +username );
+        model.addAttribute("message", "Hello Spring MVC Framework!");
+        return"Describe";
+    }
+    @PostMapping("/error")
+    public String sdsf(Model model,@RequestParam String sourceText) {
+        return"Describe";
     }
 
 }

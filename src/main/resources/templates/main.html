@@ -84,12 +84,11 @@
 
 <h1>Назва гри</h1>
 
-<form role="form" method="post" th:action="@{/main}" th:object="${user}">
-    <div class="form-group">
-    <label for="username">Введіть ваше ім'я:</label>
-    <input type="text" class="form-control" id="username" name="playerName" th:field="*{user.username}" placeholder="username">
-    </div>
-    <button type="submit" class="btn btn-primary">Зберегти і перейти далі</button>
+<form action="#" th:action="@{/Describe}"  method="post">
+    <label>Введіть ваше ім'я:
+        <input type="text" th:value="*{username}" name="username">
+    </label>
+    <button type="submit" value="Submit" onclick="saveAndContinue()">Зберегти і перейти далі</button>
 </form>
 
 <script>

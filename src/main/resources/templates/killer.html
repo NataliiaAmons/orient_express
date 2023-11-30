@@ -82,6 +82,11 @@
 </head>
 
 <body>
+<form action="#" th:action="@{/Describe}" th:object="${user}" method="post">
+    <label>Введіть ваше ім'я:</label>
+    <input type="text" th:field="*{user.username}" placeholder="username">
+    <button type="submit" value="Submit">Зберегти і перейти далі</button>
+</form>
 
     <div id="textContainer">
         <p>ОБЕРІТЬ ВБИВЦЮ</p>
