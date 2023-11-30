@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Назва</title>
+
+    <style>
+        body {
+            position: relative;
+            background: url('backpround.jpg') center/cover no-repeat;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            z-index: -1;
+            filter: blur(5px);
+           
+        }
+
+        h1,
+        form,
+        label,
+        input,
+        button {
+            position: relative;
+            z-index: 1;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid white;
+            background-color: transparent;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Назва гри</h1>
+
+    <form>
+        <label for="playerName">Введіть ваше ім'я:</label>
+        <input type="text" id="playerName" name="playerName" required>
+
+        <button type="button" onclick="saveAndContinue()">Зберегти і перейти далі</button>
+    </form>
+
+    <script>
+        function saveAndContinue() {
+            var playerName = document.getElementById("playerName").value;
+            alert("Ім'я гравця збережено: " + playerName);
+        }
+    </script>
+
+</body>
+
+</html>

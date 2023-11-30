@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+        }
+
+        #buttonContainer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 10px;
+            background-color: #333;
+            color: white;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #textContainer {
+            margin-top: 20px;
+        }
+
+        #imageContainer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 20px;
+        }
+
+        .label {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .buttonContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <script>
+        function openCharacterOne(){
+            window.open("Character1.html", "_self");
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="textContainer">
+        <p>ОБЕРІТЬ ВБИВЦЮ</p>
+    </div>
+
+    <div id="imageContainer">
+        <div class="item">
+            <span>1. </span>
+            <img src="character1.png" alt="Зображення 1">
+            <div class="buttonContainer">
+                <button onclick="openCharacterOne()">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>2. </span>
+            <img src="character2.png" alt="Зображення 2">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>3. </span>
+            <img src="character3.png" alt="Зображення 3">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>4. </span>
+            <img src="character4.png" alt="Зображення 4">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>5. </span>
+            <img src="character5.png" alt="Зображення 5">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>6. </span>
+            <img src="character6.png" alt="Зображення 6">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>7. </span>
+            <img src="character7.png" alt="Зображення 7">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <span>8. </span>
+            <img src="character8.png" alt="Зображення 8">
+            <div class="buttonContainer">
+                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="buttonContainer">
+        <button>Зберегти і звершити</button>
+    </div>
+
+    <script>
+        function toggleItem(button) {
+        }
+    </script>
+
+</body>
+
+</html>

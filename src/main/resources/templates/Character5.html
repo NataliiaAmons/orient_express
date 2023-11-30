@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: black;
+        }
+
+        #left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+        #topRightButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 90px;
+            height: 70px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #topRightButton:hover {
+            background-color: #555;
+        }
+
+        #bottomLeftButton {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 50px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #bottomLeftButton:hover {
+            background-color: #555;
+        }
+
+        #bottomRightButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #bottomRightButton:hover {
+            background-color: #555;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+    <script>
+
+        var button = false;
+        var smokingPipeBrush = false;
+
+        function showButtons() {
+            document.getElementById("text").style.display = "none";
+            document.getElementById("textOne").style.display = "none";
+            document.getElementById("showActionsBtn").style.display = "none";
+            document.getElementById("actions").style.display = "flex";
+            if(button==false){
+                document.getElementById("QThree").style.display = "none";
+            }
+            if(smokingPipeBrush==false){
+                document.getElementById("QFour").style.display = "none";
+            }
+        }
+        function showQOne() {
+            document.getElementById("QOne").style.display = "none";
+            document.getElementById("answerOne").style.display = "initial";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQTwo() {
+            document.getElementById("QTwo").style.display = "none";
+            document.getElementById("answerTwo").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThree() {
+            document.getElementById("QThree").style.display = "none";
+            document.getElementById("answerThree").style.display = "initial";
+            document.getElementById("actionThree").style.display = "flex";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThreeOne() {
+            document.getElementById("QThreeOne").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "initial";
+            document.getElementById("actionThreeOne").style.display = "flex";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThreeTwo() {
+            document.getElementById("QThreeTwo").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "initial";
+            document.getElementById("actionThreeTwo").style.display = "flex";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQThreeThree() {
+            document.getElementById("QThreeThree").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "none";
+            document.getElementById("answerFour").style.display = "none";
+        }
+        function showQFour() {
+            document.getElementById("QFour").style.display = "none";
+            document.getElementById("answerFour").style.display = "initial";
+            document.getElementById("answerOne").style.display = "none";
+            document.getElementById("answerTwo").style.display = "none";
+            document.getElementById("answerThree").style.display = "none";
+            document.getElementById("answerThreeOne").style.display = "none";
+            document.getElementById("answerThreeTwo").style.display = "none";
+            document.getElementById("answerThreeThree").style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="left">
+        <img src="character5.png" alt="Background Image" style="max-width: 100%; max-height: 100%;">
+    </div>
+
+    <div id="right">
+        <h1 id="text">провідник П'єр Мішель</h1>
+        <h2 id="textOne"> опис </h2>
+        <button id="showActionsBtn" onclick="showButtons()">Спитати</button>
+
+        <p id="answerOne" style="display: none; flex-direction: column;">Одразу після вечері, мсьє. Якраз після зупинки у Белграді. Він так само робив попередньої ночі. Під час вечері він попросив розстелити йому постіль, і я це зробив. Після того у купе заходили його камердинер і молодий американець, його секретар. Він також подзвонив у дзвінок о двадцять по першій – після того, як ми зупинилися. Я потягнув за ручку, але він французькою відповів, що сталася певна помилка.</p>
+        <p id="answerTwo" style="display: none; flex-direction: column;">Одна з дам йшла до туалет в іншому кінці коридору. Яка дама - не знаю, мсьє. Це було дуже далеко, і вона йшла до мене спиною. Вона була в багряному кімоно з драконами.</p>
+        <p id="answerThree" style="display: none; flex-direction: column;">Я не губив ґудзика. Тут, напевне, сталася якась помилка.</p>
+        <p id="answerThreeOne" style="display: none; flex-direction: column;">Це неправда, мсьє, це неправда! Ви звинувачуєте мене у злочині. Я не винен. Абсолютно невинен! Для чого мені убивати містера, якого я раніше не бачив жодного разу?</p>
+        <p id="answerThreeTwo" style="display: none; flex-direction: column;">У наступному вагоні, балакав зі своїм колегою. Він може підтвердити мої слова.</p>
+        <p id="answerThreeThree" style="display: none; flex-direction: column;">Не знаю, мсьє. Це для мене загадка. Усі мої ґудзики на місці.</p>
+        <p id="answerFour" style="display: none; flex-direction: column;">Так, сер.</p>
+
+
+        <div id="actions" style="display: none; flex-direction: column;">
+
+            <button id="QOne" onclick="showQOne()" style=" flex-direction: column;">Коли містер Ретчетт пішов спати?</button>
+
+            <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column;">Чи бачили ви, щоб інші пасажири ходили по коридору вночі?</button>
+
+            <button id="QThree" onclick="showQThree()" style=" flex-direction: column;">Ось ґудзик із вашої  уніформи. Він був знайдений у купе американської леді.</button>
+            <div id="actionThree" style="display: none; flex-direction: column;">
+                <button id="QThreeOne" onclick="showQThreeOne()" style=" flex-direction: column;"> Її суміжне з купе містера Ретчетта, тому вбивця вийшов через двері, впустивши цей ґудзик.</button>
+                <div id="actionThreeOne" style="display: none; flex-direction: column;">
+                    <button id="QThreeTwo" onclick="showQThreeTwo()" style=" flex-direction: column;"> Де ви були, коли задзвенів дзвінок місіс Хаббард?</button>
+                    <div id="actionThreeTwo" style="display: none; flex-direction: column;">
+                        <button id="QThreeThree" onclick="showQThreeThree()" style=" flex-direction: column;">А цей ґудзик із уніформи провідників, як ви це поясните?</button>
+                    </div>
+                </div>
+            </div>
+
+            <button id="QFour" onclick="showQFour()" style=" flex-direction: column;">Ви курите трубку?</button>
+            <div id="actionFour" style="display: none; flex-direction: column;">
+            </div>
+
+        </div>
+    </div>
+
+
+    <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="yourButtonClickFunction()">
+    <img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image"
+        onclick="yourBottomLeftButtonClickFunction()">
+    <img id="bottomRightButton" src="right.png" alt="Bottom Right Button Image"
+        onclick="yourBottomRightButtonClickFunction()">
+
+</body>
+
+</html>
