@@ -47,7 +47,8 @@ public class QuestionRepository {
             if (Integer.valueOf(row[1]) == questionNumber) {
                 question.setCharacter(Integer.valueOf(row[0]));
                 question.setNumber(Integer.valueOf(row[1]));
-                question.setEvidenceNeeded(row[2]);
+                //question.setEvidenceNeeded(row[2]);
+                question.setEvidenceNeeded(2);
                 question.setQuestionText(row[3]);
                 question.setAnswer(row[4]);
                 question.setPrevious(Integer.valueOf(row[5]));

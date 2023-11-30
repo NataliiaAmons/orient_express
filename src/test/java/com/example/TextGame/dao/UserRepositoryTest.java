@@ -1,7 +1,6 @@
-package com.example.TextGame;
+package com.example.TextGame.dao;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,14 +9,8 @@ import java.nio.file.Path;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-@SpringBootTest
-class TextGameApplicationTests {
+public class UserRepositoryTest {
 
-	@Test
-	void contextLoads() {
-	}
-
-    public static class UserRepositoryTest {
         private Path workingDir = Path.of("", "src/main/resources/static");
 
 
@@ -30,5 +23,4 @@ class TextGameApplicationTests {
             assertThat(content, is("duke"));
         }
 
-    }
 }

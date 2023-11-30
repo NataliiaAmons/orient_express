@@ -3,7 +3,7 @@ package com.example.TextGame.domain;
 public class Question {
     private int character;
     private int number;
-    private String evidenceNeeded;
+    private int evidenceNeeded;
     private String questionText;
     private String answer;
     private int previous;
@@ -15,7 +15,7 @@ public class Question {
     public int getNumber(){
         return number;
     }
-    public String getEvidenceNeeded() {
+    public int getEvidenceNeeded() {
         return evidenceNeeded;
     }
     public String getQuestionText(){
@@ -35,7 +35,7 @@ public class Question {
     public void setNumber(int x){
         this.number = x;
     }
-    public void setEvidenceNeeded(String evidenceNeeded) {
+    public void setEvidenceNeeded(int evidenceNeeded) {
         this.evidenceNeeded = evidenceNeeded;
     }
     public void setQuestionText(String t){
