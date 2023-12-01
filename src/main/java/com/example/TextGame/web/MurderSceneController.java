@@ -6,6 +6,7 @@ import com.example.TextGame.domain.Evidence;
 import com.example.TextGame.service.CurrentSessionService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,14 +17,17 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Controller
 public class MurderSceneController {
     @Autowired
     private EvidenceRepository evidenceRepository;
     @Autowired
     private UserRepository userRepository;
+
     @GetMapping("/SceneOfTheMurder")
     //анотація яка викликає запрос до сайту "SceneOfTheMurder"
     public String getSceneOfTheMurder() {
+        System.out.println("SceneOfTheMurder");
         return "SceneOfTheMurder";
     }
 
@@ -33,10 +37,9 @@ public class MurderSceneController {
         ArrayList<Evidence> allEvidence = evidenceRepository.getAllEvidences();
         ArrayList<Evidence> evidence = new ArrayList<>();
         for(int i=0; i<allEvidence.size(); i++) {
-            if (allEvidence.get(i).getLocation() == location) {
+            if (allEvidence.get(i).getLocation().equals(location)) {
                 evidence.add(allEvidence.get(i));
             }
-            return "location";
         }
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String username = CurrentSessionService.getUsername(request);
@@ -48,6 +51,6 @@ public class MurderSceneController {
         //redirectAttributes.addFlashAttribute( "character", currentCharacter);
 //
         //return new ModelAndView("redirect:/character", (Map<String, ?>) model);
-        return "location";
+        return "SceneOfTheMurder";
     }
 }

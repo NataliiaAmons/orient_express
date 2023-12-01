@@ -113,27 +113,34 @@
 
 <div id="right">
     <p id="text"> text .</p> <!-- тут текст -->
+
     <button id="showActionsBtn" onclick="showButtons()">Показати дії</button>
-
-
-
-    <div id="actions" style="display: none; flex-direction: column;">
-        <form action="#" th:action="@{/location}"  method="post">
-            <input type="hidden" value="1" name="location" style="display: none">
-            <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути тіло</button>
-            <if >
-
-            </if>
-        </form>
-        <form action="#" th:action="@{/location}"  method="post">
-            <input type="hidden" value="2" name="location" style="display: none">
-            <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути стіл</button>
-        </form>
-        <form action="#" th:action="@{/location}"  method="post">
-            <input type="hidden" value="3" name="location" style="display: none">
-            <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути підлогу</button>
-        </form>
-    </div>
+    <td>
+        <span th:if="${previous} == 0">
+            <div id="actions" style="display: none; flex-direction: column;">
+                <form action="#" th:action="@{/location}"  method="post">
+                    <input type="hidden" value="CrimeScene" name="location" style="display: none">
+                    <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути тіло</button>
+                </form>
+                <form action="#" th:action="@{/location}"  method="post">
+                    <input type="hidden" value="CrimeScene" name="location" style="display: none">
+                    <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути стіл</button>
+                </form>
+                <form action="#" th:action="@{/location}"  method="post">
+                    <input type="hidden" value="CrimeScene" name="location" style="display: none">
+                    <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути підлогу</button>
+                </form>
+            </div>
+        </span>
+        <span th:unless="${previous} == 0">
+            <div id="actions1" style="display: none; flex-direction: column;">
+                <form action="#" th:action="@{/evidence}"  method="post">
+                    <input type="hidden" value="1" name="location" style="display: none">
+                    <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути тіло</button>
+                </form>
+            </div>
+        </span>
+    </td>
 </div>
 
 

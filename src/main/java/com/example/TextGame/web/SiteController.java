@@ -16,10 +16,6 @@ public class SiteController {
             return "Describe";
         }
 
-        @GetMapping("/SceneOfTheMurder") //анотація яка викликає запрос до сайту "SceneOfTheMurder"
-        public String getSceneOfTheMurder() {
-            return "SceneOfTheMurder";
-        }
 
 
     //@GetMapping("/character") //анотація яка викликає запрос до сайту "SceneOfTheMurder"

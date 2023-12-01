@@ -59,4 +59,15 @@ public class DialogService {
         return questions;
     }
 
+    public ArrayList<Question> getConnectedQuestions(int questionNumber) throws IOException {
+        ArrayList<Question> allQuestions = questionRepository.getAllQuestions();
+        ArrayList<Question> questions = new ArrayList<>();
+        for (int i=0; i<allQuestions.size(); i++){
+            if (questionNumber == allQuestions.get(i).getPrevious()) {
+                questions.add(allQuestions.get(i));
+            }
+        }
+        return questions;
+    }
+
 }
