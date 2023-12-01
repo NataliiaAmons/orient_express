@@ -85,9 +85,8 @@
 <h1>Назва гри</h1>
 
 <form action="#" th:action="@{/Describe}"  method="post">
-    <label>Введіть ваше ім'я:
-        <input type="text" th:value="*{username}" name="username">
-    </label>
+    <label>Введіть ваше ім'я:</label>
+    <input type="text" th:value="*{username}" name="username">
     <button type="submit" value="Submit" onclick="saveAndContinue()">Зберегти і перейти далі</button>
 </form>
 
