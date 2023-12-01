@@ -1,6 +1,7 @@
 package com.example.TextGame.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SiteController {
@@ -20,13 +21,20 @@ public class SiteController {
             return "SceneOfTheMurder";
         }
 
+
+    //@GetMapping("/character") //анотація яка викликає запрос до сайту "SceneOfTheMurder"
+    public String character() {
+        return "character";
+    }
+
         @GetMapping("/Book") //анотація яка викликає запрос до сайту "Book"
         public String getBook() {
             return "Book";
         }
 
         @GetMapping("/Killer") //анотація яка викликає запрос до сайту "Killer"
-        public String getKiller() {
+        public String getKiller(Model model) {
+            model.addAttribute("characterNumber", "characterNumber");
             return "Killer";
         }
 

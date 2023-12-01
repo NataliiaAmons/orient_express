@@ -1,5 +1,6 @@
 package com.example.TextGame.web;
 
+import com.example.TextGame.dao.CharacterRepository;
 import com.example.TextGame.dao.UserRepository;
 import com.example.TextGame.service.CurrentSessionService;
 import com.example.TextGame.service.UserService;
@@ -22,6 +23,10 @@ public class UserController {
     public UserRepository userRepository;
     @Autowired
     public UserService userService;
+    @Autowired
+    public DialogController dialogController;
+    @Autowired
+    private CharacterRepository characterRepository;
 
     @GetMapping("/")
     public String main(Model model){
@@ -59,8 +64,17 @@ public class UserController {
         System.out.println("username saved: " +username );
         return"Describe";
     }
-    @PostMapping("/error")
-    public String sdsf(Model model,@RequestParam String sourceText) {
+
+    //@PostMapping("/dialog")
+    public String sdfd(Model model, @RequestParam("username") String username) throws IOException {
+        model.addAttribute("message", "Hello Spring MVC Framework!");
+
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        CurrentSessionService.addUsernameToSession(request, username);
+        String name = CurrentSessionService.getUsername(request);
+        userService.createUserFiles(username);
+
+        System.out.println("username saved: " +username );
         return"Describe";
     }
 

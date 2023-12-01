@@ -226,12 +226,7 @@
     <h2 th:text="${character.info}" id="textOne">info</h2>
     <button id="showActionsBtn" onclick="showButtons()">Спитати</button>
 
-    <tr th:each="question: ${questions}">
-        <button id="Q" th:text="${question.questionText}" onclick="showQ()"  style=" flex-direction: column;">question1</button>
-        <div th:if="${questions.get(0).evidenceNeeded} != 'null'">
-            <p id="A" th:text="${question.answer}" style="display: none; flex-direction: column;">answer1</p>
-        </div>
-    </tr>
+
 
 
     <p id="answerOne" style="display: none; flex-direction: column;">Нічого особливого не чула. Але вранці я знайшла ґудзик. Це не мій. У мене таких немає. Я читала журнал минулої ночі, перед тим, як лягати спати. Перед тим, як вимкнути світло, я поклала журнал на невеличку коробку, що стояла на підлозі поблизу вікна. Провідник не підходив до вікна ввечері. Зрештою, вранці я помітила ґудзик справа від журналу. </p>
@@ -245,11 +240,11 @@
 
     <div id="actions" style="display: none; flex-direction: column;">
 
-        <div th:if="${questions.get(0).evidenceNeeded} != 'null'">
+        <div >
             <button id="QOne" onclick="showQOne()"  style=" flex-direction: column;">question1</button>
         </div>
 
-        <div th:if="${questions.get(0).evidenceNeeded} == 'null'">
+        <div >
             <button id="QTwo" onclick="showQTwo()" style=" flex-direction: column;"> Ви ж американка, місіс Хаббард? Пам'ятаєте справу із викраденням дитини Армстронгів?</button>
             <div id="actionTwo" style=" display: none; position: relative; flex-direction: column;">
                 <button id="QTwoOne" onclick="showQTwoOne()" style=" flex-direction: column;">Він не уникнув. Він помер. Помер минулої ночі. Цією людиною був Ретчетт.</button>

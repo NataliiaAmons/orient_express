@@ -23,7 +23,8 @@ public class QuesionRepositoryTest {
         assertThat(question.getQuestionText(), is("Ви курите трубку?"));
         assertThat(question.getNumber(), is(5));
         assertThat(question.getCharacter(), is(1));
-        assertThat(question.getEvidenceNeeded(), is(2));
+        assertThat(question.getEvidenceNeeded(), is(1));
+        assertThat(question.getEvidenceGiven(), is(0));
         assertThat(question.getPrevious(), is(0));
 
     }
@@ -36,7 +37,8 @@ public class QuesionRepositoryTest {
         assertThat(question5.getQuestionText(), is("Ви курите трубку?"));
         assertThat(question5.getNumber(), is(5));
         assertThat(question5.getCharacter(), is(1));
-        assertThat(question5.getEvidenceNeeded(), is(2));
+        assertThat(question5.getEvidenceNeeded(), is(1));
+        assertThat(question5.getEvidenceGiven(), is(0));
         assertThat(question5.getPrevious(), is(0));
 
     }
