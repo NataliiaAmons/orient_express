@@ -130,68 +130,75 @@
     </div>
 
     <div id="imageContainer">
-        <form action="#" th:action="@{/dialog}"  method="post">
-            <label>1. </label>
-            <input type="hidden" id="characterNumber" name="characterNumber" value="5">
-            <button type="submit" value="Submit" onclick="saveAndContinue()">Зберегти і перейти далі</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>1. </span>
+                <img src="character1.png" alt="Зображення 1">
+                <input type="hidden" name="characterNumber" value = "1" />
+                <button type="submit"   value="Submit">Опитати</button>
+            </div>
         </form>
-        <form th:action="@{/dialog}" method="POST">
+        <form action="#" th:action="@{/dialog}" method="POST">
             <div class="item" >
                 <span>2. </span>
                 <img src="character2.png" alt="Зображення 2">
-                <input type="hidden" name="characterNumber" data-value = "2" />
-                <div class="buttonContainer">
-                    <button type="Submit"  >Опитати</button>
-                </div>
+                <input type="hidden" name="characterNumber" value = "2" />
+                <button type="submit" value="Submit">Опитати</button>
             </div>
         </form>
-    <div th:action="@{/dialog}" class="item">
-        <span>3. </span>
-        <img src="character3.png" alt="Зображення 3">
-        <div class="buttonContainer">
-            <button name="character3" value="${1}">Опитати</button>
-        </div>
-    </div>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>3. </span>
+                <img src="character3.png" alt="Зображення 3">
+                <input type="hidden" name="characterNumber" value = "3" />
+                <button type="submit" value="Submit" >Опитати</button>
+            </div>
+        </form>
 
-    <div class="item">
-        <span>4. </span>
-        <img value="4" src="character4.png" alt="Зображення 4">
-        <div class="buttonContainer">
-            <button name="character4" value="${4}">Опитати</button>
-        </div>
-    </div>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>4. </span>
+                <img src="character4.png" alt="Зображення 4">
+                <input type="hidden" name="characterNumber" value = "4" />
+                <button type="submit" value="Submit" >Опитати</button>
+            </div>
+        </form>
 
-    <div class="item">
-        <span>5. </span>
-        <img src="character5.png" alt="Зображення 5">
-        <div class="buttonContainer">
-            <button onclick="toggleItem5()">Опитати</button>
-        </div>
-    </div>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>5. </span>
+                <img src="character5.png" alt="Зображення 5">
+                <input type="hidden" name="characterNumber" value = "5" />
+                <button type="submit" value="Submit" >Опитати</button>
+            </div>
+        </form>
 
-    <div class="item">
-        <span>6. </span>
-        <img src="character6.png" alt="Зображення 6">
-        <div class="buttonContainer">
-            <button onclick="toggleItem6()">Опитати</button>
-        </div>
-    </div>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>6. </span>
+                <img src="character6.png" alt="Зображення 6">
+                <input type="hidden" name="characterNumber" value = "6" />
+                <button type="submit" value="Submit" >Опитати</button>
+            </div>
+        </form>
 
-    <div class="item">
-        <span>7. </span>
-        <img src="character7.png" alt="Зображення 7">
-        <div class="buttonContainer">
-            <button onclick="toggleItem7()">Опитати</button>
-        </div>
-    </div>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>7. </span>
+                <img src="character7.png" alt="Зображення 7">
+                <input type="hidden" name="characterNumber" value = "7" />
+                <button type="submit" value="Submit" onclick="saveAndContinue()">Опитати</button>
+            </div>
+        </form>
 
-    <div class="item">
-        <span>8. </span>
-        <img src="character8.png" alt="Зображення 8">
-        <div class="buttonContainer">
-            <button id="character8" data-value="8" onclick="toggleItem8()">Опитати</button>
-        </div>
-    </div>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>8. </span>
+                <img src="character8.png" alt="Зображення 8">
+                <input type="hidden" name="characterNumber" value = "8" />
+                <button type="submit" value="Submit" >Опитати</button>
+            </div>
+        </form>
     </div>
 
     <div id="buttonContainer">
@@ -199,44 +206,6 @@
     </div>
 
 <script>
-    function saveAndContinue() {
-       var playerName = document.getElementById("characterName").value;
-       if (characterName == null || characterName == "") {
-           alert("Please Fill In All Required Fields");
-           return false;
-       }
-       alert("character: " + characterName);
-       location.href = "/dialog"
-   }
-
-   function toggleItem2() {
-       location.href = "/character2"
-   }
-
-   function toggleItem3() {
-       location.href = "/character3"
-   }
-
-   function toggleItem4() {
-       $request->subscription
-       location.href = "/character4"
-   }
-
-   function toggleItem5() {
-       location.href = "/character5"
-   }
-
-   function toggleItem6() {
-       location.href = "/character6"
-   }
-   function toggleItem7() {
-       location.href = "/character7"
-   }
-   function toggleItem8() {
-       var el = document.getElementById('characterName');
-   console.log(el.getAttribute('data-value'));
-       location.href = "/dialog"
-   }
 
    function Book() {
        location.href = "/Book"

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -115,10 +115,34 @@
     <p id="text"> text .</p> <!-- тут текст -->
     <button id="showActionsBtn" onclick="showButtons()">Показати дії</button>
 
+
+
     <div id="actions" style="display: none; flex-direction: column;">
-        <button onclick="ExamineTheBody()">Оглянути тіло</button>
-        <button onclick="ExamineTheTable()">Оглянути стіл</button>
-        <button onclick="ExamineTheFloor()">Оглянути підлогу</button>
+        <form action="#" th:action="@{/location}"  method="post">
+            <input type="hidden" value="1" name="location" style="display: none">
+            <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути тіло</button>
+            <if >
+
+            </if>
+        </form>
+        <form action="#" th:action="@{/location}"  method="post">
+            <input type="hidden" value="2" name="location" style="display: none">
+            <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути стіл</button>
+        </form>
+        <form action="#" th:action="@{/location}"  method="post">
+            <input type="hidden" value="3" name="location" style="display: none">
+            <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути підлогу</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:if="${loctcation != '0'}">
+    <div th:each="evidence: ${evidence}">
+    <form action="#" th:action="@{/location}"  method="post">
+        <input type="hidden" value="${evidence.number}" name="evidence" style="display: none">
+        <button type="submit" value="Submit" style=" flex-direction: column;">Оглянути стіл</button>
+    </form>
     </div>
 </div>
 
