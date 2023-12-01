@@ -31,13 +31,17 @@ public class DialogService {
     public ArrayList<Question> getPossibleQuestions(int characterNumber, String username) throws IOException {
         ArrayList<Question> allCharacterQuestions = setQuestions(characterNumber);
         ArrayList<Question> possibleQuestions = new ArrayList<Question>();
+        ArrayList<Integer> askedQuestions = userRepository.getAskedQuestions(username);
+        ArrayList<Integer> foundEvidence = userRepository.getFoundEvidence(username);
         for(int i=0; i<allCharacterQuestions.size(); i++){
             int evidenceNeeded = allCharacterQuestions.get(i).getEvidenceNeeded();
-            ArrayList<Integer> askedQuestions = userRepository.getAskedQuestions(username);
-            ArrayList<Integer> foundEvidence = userRepository.getFoundEvidence(username);
-            if(askedQuestions.contains(allCharacterQuestions.get(i).getNumber())){
-                if (evidenceNeeded == 0 || foundEvidence.contains(evidenceNeeded)){
-                    possibleQuestions.add(allCharacterQuestions.get(i));
+            int questionNumber = allCharacterQuestions.get(i).getNumber();
+
+            if(characterNumber == allCharacterQuestions.get(i).getCharacter()) {
+                if (!askedQuestions.contains(questionNumber)) {
+                    if (evidenceNeeded == 0 || foundEvidence.contains(evidenceNeeded)) {
+                        possibleQuestions.add(allCharacterQuestions.get(i));
+                    }
                 }
             }
         }
