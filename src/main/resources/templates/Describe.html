@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: black;
+        }
+
+        #left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+        #topRightButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 90px;
+            height: 70px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #topRightButton:hover {
+            background-color: #555;
+        }
+
+        #bottomRightButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #bottomRightButton:hover {
+            background-color: #555;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="left">
+    <img src="Puaro.png" alt="Background Image" style="max-width: 100%; max-height: 100%;">
+</div>
+
+<div id="right">
+    <p id="text">Your text goes here.</p> <!-- Replace with your text -->
+</div>
+
+<img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="Book()">
+<img id="bottomRightButton" src="right.png" alt="Bottom Right Button Image"
+     onclick="yourBottomRightButtonClickFunction()">
+
+<script>
+
+    function Book() {
+            location.href = "/Book"
+        }
+
+    function yourBottomRightButtonClickFunction() {
+      location.href = "/SceneOfTheMurder"
+      }
+
+</script>
+
+</body>
+
+</html>

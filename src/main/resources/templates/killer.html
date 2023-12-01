@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +16,73 @@
             flex-direction: column;
             height: 100vh;
             justify-content: space-between;
+        }
+
+        #topRightButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 90px;
+            height: 70px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #topRightButton:hover {
+            background-color: #555;
+        }
+
+        #topRightButton img {
+            margin: 0;
+        }
+
+        #textContainer {
+            margin-top: 20px;
+        }
+
+        #imageContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #bottomLeftButton {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 50px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #bottomLeftButton:hover {
+            background-color: #555;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 20px;
+        }
+
+        .label {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         #buttonContainer {
@@ -40,127 +108,118 @@
             background-color: #555;
         }
 
-        #textContainer {
-            margin-top: 20px;
-        }
+        .flex-container {
+             display: flex;
+             flex-direction: row;
+             flex-wrap: wrap;
+             height: 60vh;
+             border: 1px solid black;
+             padding: 10px 5px;
+             box-sizing: border-box;
+         }
 
-        #imageContainer {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        img {
-            max-width: 100px;
-            max-height: 100px;
-            margin: 20px;
-        }
-
-        .label {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .buttonContainer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
     </style>
-    <script>
-        function openCharacterOne(){
-            window.open("Character1.html", "_self");
-        }
-    </script>
 </head>
 
 <body>
+    <img id="topRightButton" src="book-removebg-preview.png" alt="Top Right Button Image" onclick="Book()">
+    <img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image" onclick="Back()">
 
     <div id="textContainer">
-        <p>ОБЕРІТЬ ВБИВЦЮ</p>
+        <p>ОБЕРІТЬ ПЕРСОНАЖА</p>
     </div>
 
     <div id="imageContainer">
-        <div class="item">
-            <span>1. </span>
-            <img src="character1.png" alt="Зображення 1">
-            <div class="buttonContainer">
-                <button onclick="openCharacterOne()">Обрати вбивцю</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>1. </span>
+                <img src="character1.png" alt="Зображення 1">
+                <input type="hidden" name="characterNumber" value = "1" />
+                <button type="submit"   value="Submit">Опитати</button>
             </div>
-        </div>
+        </form>
+        <form action="#" th:action="@{/dialog}" method="POST">
+            <div class="item" >
+                <span>2. </span>
+                <img src="character2.png" alt="Зображення 2">
+                <input type="hidden" name="characterNumber" value = "2" />
+                <button type="submit" value="Submit">Опитати</button>
+            </div>
+        </form>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>3. </span>
+                <img src="character3.png" alt="Зображення 3">
+                <input type="hidden" name="characterNumber" value = "3" />
+                <button type="submit" value="Submit" >Опитати</button>
+            </div>
+        </form>
 
-        <div class="item">
-            <span>2. </span>
-            <img src="character2.png" alt="Зображення 2">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>4. </span>
+                <img src="character4.png" alt="Зображення 4">
+                <input type="hidden" name="characterNumber" value = "4" />
+                <button type="submit" value="Submit" >Опитати</button>
             </div>
-        </div>
+        </form>
 
-        <div class="item">
-            <span>3. </span>
-            <img src="character3.png" alt="Зображення 3">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>5. </span>
+                <img src="character5.png" alt="Зображення 5">
+                <input type="hidden" name="characterNumber" value = "5" />
+                <button type="submit" value="Submit" >Опитати</button>
             </div>
-        </div>
+        </form>
 
-        <div class="item">
-            <span>4. </span>
-            <img src="character4.png" alt="Зображення 4">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>6. </span>
+                <img src="character6.png" alt="Зображення 6">
+                <input type="hidden" name="characterNumber" value = "6" />
+                <button type="submit" value="Submit" >Опитати</button>
             </div>
-        </div>
+        </form>
 
-        <div class="item">
-            <span>5. </span>
-            <img src="character5.png" alt="Зображення 5">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>7. </span>
+                <img src="character7.png" alt="Зображення 7">
+                <input type="hidden" name="characterNumber" value = "7" />
+                <button type="submit" value="Submit" onclick="saveAndContinue()">Опитати</button>
             </div>
-        </div>
+        </form>
 
-        <div class="item">
-            <span>6. </span>
-            <img src="character6.png" alt="Зображення 6">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
+        <form action="#" th:action="@{/dialog}" method="post" style="flex-direction: column">
+            <div class="item" >
+                <span>8. </span>
+                <img src="character8.png" alt="Зображення 8">
+                <input type="hidden" name="characterNumber" value = "8" />
+                <button type="submit" value="Submit" >Опитати</button>
             </div>
-        </div>
-
-        <div class="item">
-            <span>7. </span>
-            <img src="character7.png" alt="Зображення 7">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
-            </div>
-        </div>
-
-        <div class="item">
-            <span>8. </span>
-            <img src="character8.png" alt="Зображення 8">
-            <div class="buttonContainer">
-                <button onclick="toggleItem(this)">Обрати вбивцю</button>
-            </div>
-        </div>
+        </form>
     </div>
 
     <div id="buttonContainer">
-        <button>Зберегти і звершити</button>
+        <button onclick="next()">Зберегти і обрати вбивцю</button>
     </div>
 
-    <script>
-        function toggleItem(button) {
-        }
-    </script>
+<script>
+
+   function Book() {
+       location.href = "/Book"
+   }
+
+   function Back() {
+       history.back()
+   }
+
+   function next() {
+       location.href = "/End"
+   }
+
+</script>
 
 </body>
 

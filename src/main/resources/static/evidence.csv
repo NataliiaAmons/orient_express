@@ -1,1 +1,7 @@
-letter;handkerchief;
+1;brush;smokingPipeBrush.png;Ви знайшли йоржик для чистки трубки, проте в одязі Ретчетта немає ні трубки, ні тютюну. Мішечка для нього теж немає;CrimeScene
+2;button;button.png;Ґудзик з форми провідників цього потягу;InterrogationArea
+3;gun;gun-removebg-preview.png;Опис револьверу;CrimeScene
+4;handkerchief;handkerchief.png;Вишуканий батистовий носовичок. У кутку вишита велика літера 'Н' (може бути як англійська 'h', так і українська 'н').;CrimeScene
+5;letter;letter.png;Декілька обвуглених шматків паперу. Вам вдається прочитати напис: “згадай маленьку Дейзі Армстронг”.;CrimeScene
+6;knife;knife.png;Опис ножа;InterrogationArea
+7;princessStatement;null; Ви розпитали княгиню про її вечір;InterrogationArea
