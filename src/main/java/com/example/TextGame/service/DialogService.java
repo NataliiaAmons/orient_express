@@ -25,26 +25,6 @@ public class DialogService {
         Character character = characterRepository.getCharacterFromFile(characterNumber);
         return character;
     }
-
-    public ArrayList<QuestionVM> getVMQuestions(int characterNumber, String username) throws IOException {
-        ArrayList<QuestionVM> vmquestions = new ArrayList<>();
-
-        ArrayList<Question> questions = getPossibleQuestions(characterNumber, username);
-        ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
-
-        for(Question question: questions){
-            boolean ifAsked = false;
-            for(int a: asked){
-                if(a == question.getNumber()){
-                    ifAsked = true;
-                }
-            }
-            QuestionVM vmquestion = new QuestionVM(question, ifAsked);
-            vmquestions.add(vmquestion);
-        }
-        return vmquestions;
-    }
-
     public ArrayList<QuestionVM> getFirstVMQuestions(int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
 
@@ -131,37 +111,11 @@ public class DialogService {
         userRepository.addQuestionToAsked(username, questionNumber);
     }
 
-    public QuestionVM getCurrentQuestion(int questionNumber) throws IOException {
-        String username = CurrentSessionService.username();
-        Question currentQuestion = questionRepository.getQuestionFromFile(questionNumber);
-        ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
-        boolean ifAsked = false;
-        for(int a: asked){
-            if(a == currentQuestion.getNumber()){
-                ifAsked = true;
-            }
-        }
-        return new QuestionVM(currentQuestion, ifAsked);
-    }
-
     public void addEvidenceToFound(int evidence) throws IOException {
         String username = CurrentSessionService.username();
         if(Integer.valueOf(evidence) != 0){
             userRepository.addEvidenceToFound(username, Integer.valueOf(evidence));
         }
-    }
-
-    public ArrayList<QuestionVM> getConnectedQuestionsVM(int characterNumber, int questionNumber, String username) throws IOException {
-        ArrayList<QuestionVM> availableQuestions = getVMQuestions(characterNumber, username);
-        ArrayList<QuestionVM> questions = new ArrayList<>();
-        ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
-
-        for (int i=0; i<availableQuestions.size(); i++) {
-            if (availableQuestions.get(i).getPrevious() == questionNumber) {
-                questions.add(availableQuestions.get(i));
-            }
-        }
-        return questions;
     }
 
 }

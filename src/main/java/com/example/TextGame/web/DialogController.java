@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
@@ -79,19 +78,5 @@ public class DialogController {
     }
 
 
-    //@PostMapping("/dialog")
-    public String getQuestion(@PathVariable("character") String character, @PathVariable("questionNumber") String questionNumber, Model model) throws IOException {
-
-        String username = CurrentSessionService.username();
-        dialogService.addQuestionToAsked(username, Integer.valueOf(questionNumber));
-
-        ArrayList<QuestionVM> availableQuestions = dialogService.getVMQuestions(Integer.valueOf(character), username);
-        QuestionVM currentQuestion = dialogService.getCurrentQuestion(Integer.valueOf(questionNumber));
-
-        model.addAttribute("availableQuestions", availableQuestions);
-        model.addAttribute("currentQuestionNumber", questionNumber);
-
-        return "character";
-    }
 
 }
