@@ -46,6 +46,7 @@
 
         #imageContainer {
             display: flex;
+            flex-direction: row-reverse;
             justify-content: space-around;
             align-items: center;
         }
@@ -67,6 +68,7 @@
             align-items: center;
             margin-bottom: 20px;
         }
+
     </style>
 </head>
 
@@ -75,19 +77,24 @@
     <div id="textContainer">
         <p>ЗІБРАНІ ПРЕДМЕТИ</p>
     </div>
-    <tr th:each="evidence: ${evidence}">
-        <div class="item">
-            <img src="${evidence.photo} ">
+
+    <div id="imageContainer"  >
+        <div th:each="evidence: ${evidences}">
+            <img th:src="${evidence.photo} " alt="Evidence photo" >
+            <p th:text="${evidence.name}" id ="text">name</p>
         </div>
-    </tr>
-
-
-
-    <div id="buttonContainer">
-        <button>Повернутися до гри</button>
-        <button>Зберегти і перейти в меню</button>
     </div>
 
+    <div id="buttonContainer">
+        <button onclick="Back()">Повернутися до гри</button>
+    </div>
+
+<script>
+    function Back() {
+        history.back()
+    }
+</script>
 </body>
+
 
 </html>

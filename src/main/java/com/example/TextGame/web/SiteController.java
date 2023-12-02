@@ -23,10 +23,6 @@ public class SiteController {
         return "character";
     }
 
-        @GetMapping("/Book") //анотація яка викликає запрос до сайту "Book"
-        public String getBook() {
-            return "Book";
-        }
 
         @GetMapping("/Killer") //анотація яка викликає запрос до сайту "Killer"
         public String getKiller(Model model) {

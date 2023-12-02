@@ -87,29 +87,20 @@
 <form action="#" th:action="@{/Describe}"  method="post">
     <label style="font-size:30px">Введіть ваше ім'я:</label>
     <input type="text" th:value="*{username}" name="username">
-    <input type="hidden" name="letIn" th:value = "false" />
-    <label style="font-size:25px; color:red" th:utext="${alert}">alert</label>
-        <td th:if="${itIsMe}">
-            <input type="hidden" name="letIn" th:value = "true" />
-            <button style="font-size:20px" type="submit" onclick="saveAndContinue()">Це я</button>
-        </td>
 
-    <button style="font-size:20px" type="submit" onclick="saveAndContinue()">Зберегти і перейти далі</button>
+    <td th:unless="${itIsMe}">
+        <input type="hidden" name="letIn" th:value = "false"/>
+    </td>
+    <label style="font-size:25px; color:red" th:utext="${alert}">alert</label>
+    <td th:if="${itIsMe}">
+        <input type="hidden" name="letIn" th:value = "true"/>
+        <button style="font-size:20px" type="submit" >Це я</button>
+    </td>
+
+    <button style="font-size:20px" type="submit" >Зберегти і перейти далі</button>
 
 </form>
 
-<script>
-    function saveAndContinue() {
-        var playerName = document.getElementById("playerName").value;
-        if (playerName == null || playerName == "") {
-            alert("Please Fill In All Required Fields");
-            return false;
-        }
-        alert("Ім'я гравця збережено: " + playerName);
-        location.href = "/Describe"
-    }
-
-</script>
 </body>
 
 </html>

@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public boolean isValidUsername(String username) {
-        String regex = "^[a-zA-Z][a-zA-Z0-9_]{6,19}$";
+        String regex = "^[a-zA-Z][a-zA-Z0-9_]{3,19}$";
 
         Pattern p = Pattern.compile(regex);
         if (username == null) {
@@ -44,7 +44,7 @@ public class UserService {
     public String usernameAlert(String username) throws IOException {
         String alert = null;
         if (!isValidUsername(username)) {
-            return "Ім'я має бути довшим з 6 знаків. Може включати: латинські літери; цифри (цифра не може стояти на першому місці); нижнє підкреслення '_' ";
+            return "Ім'я має бути не коротшим з 4 знаків. Може включати: латинські літери; цифри (цифра не може стояти на першому місці); нижнє підкреслення '_' ";
         }
         else {
             try {
