@@ -122,15 +122,11 @@
              document.getElementById("actions").style.display = "flex";
 
          }
-         function showQ() {
-             document.getElementById("QOne").style.display = "none";
-             document.getElementById("answerOne").style.display = "initial";
-             document.getElementById("answerTwo").style.display = "none";
-             document.getElementById("answerTwoOne").style.display = "none";
-             document.getElementById("answerTwoTwo").style.display = "none";
-             document.getElementById("answerThree").style.display = "none";
-             document.getElementById("answerFour").style.display = "none";
-             document.getElementById("answerFourOne").style.display = "none";
+         function yourBottomLeftButtonClickFunction(){
+              history.back()
+         }
+         function yourButtonClickFunction() {
+             location.href = "/Book"
          }
 
     </script>
@@ -150,44 +146,22 @@
     </td>
 
     <div id="actions" style="display: none; flex-direction: column;">
-        <td th:unless="${Previous}">
+        <p th:text="${answerToPrevious}">answer</p>
             <tr th:each="question: ${questions}">
-                <td th:if="${question.previous} == '0'">
-                    <form action="#" th:action="@{/character}" method="post" style="flex-direction: column">
-                        <input type="hidden" name="Previous" th:value = "${Previous}" />
-                        <input type="hidden" name="characterNumber" th:value = "${character.number}" />
-                        <input type="hidden" name="questionNumber" th:value = "${question.number}" />
-                        <input type="hidden" name="answer" th:value = "${question.answer}" />
-                        <input type="hidden" name="evidenceGiven" th:value = "${question.evidenceGiven}" />
-                        <td th:if="${question.asked}">
-                            <button type="submit" value="Submit" th:text="${question.questionText}" style="flex-direction: column; background-color: #111;">question</button>
-                        </td>
-                        <td th:unless="${question.asked}">
-                            <button type="submit" value="Submit" th:text="${question.questionText}" style="flex-direction: column; ">question</button>
-                        </td>
-                    </form>
-                </td>
+                <form action="#" th:action="@{/character}" method="post" style="flex-direction: column">
+                    <input type="hidden" name="Previous" th:value = "${Previous}" />
+                    <input type="hidden" name="characterNumber" th:value = "${character.number}" />
+                    <input type="hidden" name="questionNumber" th:value = "${question.number}" />
+                    <input type="hidden" name="answer" th:value = "${question.answer}" />
+                    <input type="hidden" name="evidenceGiven" th:value = "${question.evidenceGiven}" />
+                    <td th:if="${question.asked}">
+                        <button type="submit" value="Submit" th:text="${question.questionText}" style="flex-direction: column; background-color: #111;">question</button>
+                    </td>
+                    <td th:unless="${question.asked}">
+                        <button type="submit"  value="Submit" th:text="${question.questionText}" style="flex-direction: column; ">question</button>
+                    </td>
+                </form>
             </tr>
-        </td>
-
-        <td th:if="${Previous}">
-            <p name="answer" th:value = "${question.answer}" th:utext="${answerToPrevious}"></p>
-            <tr th:each="question: ${questions}">
-                <td th:if="${question.previous} == ${PreviousNumber}">
-                    <form action="#" th:action="@{/character}" method="post" style="flex-direction: column">
-                        <input type="hidden" name="Previous" th:value = "${Previous}" />
-                        <input type="hidden" name="number" th:value = "${question.number}" />
-                        <input type="hidden" name="answer" th:value = "${question.answer}" />
-                        <input type="hidden" name="evidenceGiven" th:value = "${question.evidenceGiven}" />
-                        <button type="submit" value="Submit" th:text="${question.questionText}" style="flex-direction: column;">question</button>
-                    </form>
-                </td>
-            </tr>
-        </td>
-    </td>
-        </td>
-
-
 
     </div>
 </div>
@@ -197,8 +171,6 @@
 <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="yourButtonClickFunction()">
 <img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image"
      onclick="yourBottomLeftButtonClickFunction()">
-<img id="bottomRightButton" src="right.png" alt="Bottom Right Button Image"
-     onclick="yourBottomRightButtonClickFunction()">
 
 </body>
 

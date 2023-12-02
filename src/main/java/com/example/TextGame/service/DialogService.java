@@ -45,6 +45,47 @@ public class DialogService {
         return vmquestions;
     }
 
+    public ArrayList<QuestionVM> getFirstVMQuestions(int characterNumber, String username) throws IOException {
+        ArrayList<QuestionVM> vmquestions = new ArrayList<>();
+
+        ArrayList<Question> questions = getPossibleQuestions(characterNumber, username);
+        ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
+
+        for(Question question: questions){
+            if(question.getPrevious()==0) {
+                boolean ifAsked = false;
+                for (int a : asked) {
+                    if (a == question.getNumber()) {
+                        ifAsked = true;
+                    }
+                }
+                QuestionVM vmquestion = new QuestionVM(question, ifAsked);
+                vmquestions.add(vmquestion);
+            }
+        }
+        return vmquestions;
+    }
+    public ArrayList<QuestionVM> getNextVMQuestions(int previousQuestion, int characterNumber, String username) throws IOException {
+        ArrayList<QuestionVM> vmquestions = new ArrayList<>();
+
+        ArrayList<Question> questions = getPossibleQuestions(characterNumber, username);
+        ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
+
+        for(Question question: questions){
+            if(question.getPrevious()==previousQuestion) {
+                boolean ifAsked = false;
+                for (int a : asked) {
+                    if (a == question.getNumber()) {
+                        ifAsked = true;
+                    }
+                }
+                QuestionVM vmquestion = new QuestionVM(question, ifAsked);
+                vmquestions.add(vmquestion);
+            }
+        }
+        return vmquestions;
+    }
+
     public ArrayList<String> answeredQuestions(int characterNumber, String username) throws IOException {
         ArrayList<String> askedQuestions = new ArrayList<>();
         ArrayList<Question> possibleQuestions = getPossibleQuestions(characterNumber, username);

@@ -1,6 +1,7 @@
 package com.example.TextGame.web;
 
 import com.example.TextGame.dao.CharacterRepository;
+import com.example.TextGame.dao.EvidenceRepository;
 import com.example.TextGame.dao.QuestionRepository;
 import com.example.TextGame.dao.UserRepository;
 import com.example.TextGame.domain.Character;
@@ -32,35 +33,31 @@ public class DialogController {
     private QuestionRepository questionRepository;
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private EvidenceRepository evidenceRepository;
 
     @PostMapping("/dialog")
     public String getCharacter(@ModelAttribute("characterNumber") String characterNumber, Model model) throws IOException {
-
-        System.out.println("character:" + characterNumber);
-
         String username = CurrentSessionService.username();
         Character character = dialogService.getCharacter(Integer.parseInt(characterNumber));
-        ArrayList<QuestionVM> questions = dialogService.getVMQuestions(Integer.parseInt(characterNumber), username);
+        ArrayList<QuestionVM> questions = dialogService.getFirstVMQuestions(Integer.parseInt(characterNumber), username);
 
         model.addAttribute("character", character);
         model.addAttribute("questions", questions);
         model.addAttribute("info", true);
+        model.addAttribute("answerToPrevious", null);
 
         return "character";
     }
 
     @GetMapping("/character")
     public String getCharacter(@ModelAttribute("character") Character character, Model model) throws IOException {
-
-        System.out.println("some=" + character.getName());
-
         String username = CurrentSessionService.username();
-        ArrayList<QuestionVM> availableQuestions = dialogService.getVMQuestions(character.getNumber(), username);
+        ArrayList<QuestionVM> availableQuestions = dialogService.getFirstVMQuestions(character.getNumber(), username);
 
         model.addAttribute("availableQuestions", availableQuestions);
         model.addAttribute("Previous", false);
-        model.addAttribute("isAnswer", false);
+        model.addAttribute("answerToPrevious", null);
         model.addAttribute("info", false);
 
         return "character";
@@ -68,18 +65,17 @@ public class DialogController {
 
     @PostMapping("/character")
     public String getCharacter(@ModelAttribute("characterNumber") String characterNumber, @ModelAttribute("questionNumber") String questionNumber, @ModelAttribute("answer") String answer, @ModelAttribute("evidenceGiven") String evidenceGiven, Model model) throws IOException {
-        String username = CurrentSessionService.username();
+         String username = CurrentSessionService.username();
         dialogService.addQuestionToAsked(username, Integer.valueOf(questionNumber));
 
         dialogService.addEvidenceToFound(Integer.valueOf(evidenceGiven));
 
-        ArrayList<QuestionVM> questions = dialogService.getConnectedQuestionsVM(Integer.valueOf(characterNumber), Integer.valueOf(questionNumber), username);
+        ArrayList<QuestionVM> questions = dialogService.getNextVMQuestions(Integer.valueOf(questionNumber), Integer.valueOf(characterNumber), username);
 
         ArrayList<String> askedQuestions = dialogService.answeredQuestions(Integer.valueOf(characterNumber), username);
         model.addAttribute("askedQuestions", askedQuestions);
         Character character = dialogService.getCharacter(Integer.valueOf(characterNumber));
         model.addAttribute("character", character);
-       // model.addAttribute("Previous", character);
 
         model.addAttribute("questions", questions);
         model.addAttribute("Previous", true);
@@ -87,11 +83,10 @@ public class DialogController {
         model.addAttribute("answerToPrevious", answer);
         model.addAttribute("isAnswer", true);
         model.addAttribute("evidenceGiven", evidenceGiven);
-
         boolean info = false;
         model.addAttribute("info", info);
 
-        return "character";
+        return "character1";
     }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,13 +8,26 @@
         body {
             margin: 0;
             padding: 0;
+            display: flex;
+            height: 100vh;
             background-color: black;
-            color: white;
-            text-align: center;
+        }
+
+        #left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #right {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
         }
 
         #topRightButton {
@@ -34,20 +47,6 @@
             background-color: #555;
         }
 
-        #topRightButton img {
-            margin: 0;
-        }
-
-        #textContainer {
-            margin-top: 20px;
-        }
-
-        #imageContainer {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
         #bottomLeftButton {
             position: fixed;
             bottom: 10px;
@@ -65,171 +64,110 @@
             background-color: #555;
         }
 
-        img {
-            max-width: 100px;
-            max-height: 100px;
-            margin: 20px;
+        #bottomRightButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
         }
 
-        .label {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        #buttonContainer {
+        #showActionsBtn {
             margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        button {
-            padding: 15px 30px;
+            padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             border: 1px solid white;
-            border-radius: 10px;
+            border-radius: 5px;
             background-color: #333;
             color: white;
-            margin: 10px 0;
+            width: 20%;
+        }
+
+        #showActionsBtn:hover {
+            background-color: #555;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            width: 75%;
         }
 
         button:hover {
             background-color: #555;
         }
+        .box {
+            width: 300px;
+            margin: 5px;
+            text-align: center;
+        }
     </style>
+    <script th:inline="javascript">
+
+        function showButtons() {
+            document.getElementById("text").style.display = "none";
+            document.getElementById("textOne").style.display = "none";
+            document.getElementById("showActionsBtn").style.display = "none";
+            document.getElementById("actions").style.display = "flex";
+
+        }
+        function yourBottomLeftButtonClickFunction(){
+             history.back()
+        }
+        function yourButtonClickFunction() {
+             location.href = "/Book"
+        }
+
+    </script>
 </head>
 
 <body>
-<img id="topRightButton" src="book-removebg-preview.png" alt="Top Right Button Image" onclick="Book()">
-<img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image" onclick="Back()">
 
-<div id="textContainer">
-    <p>ОБЕРІТЬ ПЕРСОНАЖА</p>
+<div id="left">
+    <img th:src="${character.photo}" alt="Background Image" style="max-width: 100%; max-height: 100%;">
 </div>
 
-<div id="imageContainer">
-    <div class="item">
-        <span>1. </span>
-        <img src="character1.png" alt="Зображення 1">
-        <div class="buttonContainer">
-            <button onclick="toggleItem1()">Опитати</button>
-        </div>
-    </div>
+<div id="right">
 
-    <div class="item">
-        <span>2. </span>
-        <img src="character2.png" alt="Зображення 2">
-        <div class="buttonContainer">
-            <button onclick="toggleItem2()">Опитати</button>
-        </div>
-    </div>
 
-    <div class="item">
-        <span>3. </span>
-        <img src="character3.png" alt="Зображення 3">
-        <div class="buttonContainer">
-            <button onclick="toggleItem3()">Опитати</button>
-        </div>
-    </div>
+        <div id="actions" style="flex-direction: column;">
+            <p style="font-size:18px" th:text="${answerToPrevious}">answer</p>
+            <tr th:each="question: ${questions}">
+                <form action="#" th:action="@{/character}" method="post" style="flex-direction: column">
+                    <input type="hidden" name="Previous" th:value = "${Previous}" />
+                    <input type="hidden" name="characterNumber" th:value = "${character.number}" />
+                    <input type="hidden" name="questionNumber" th:value = "${question.number}" />
+                    <input type="hidden" name="answer" th:value = "${question.answer}" />
+                    <input type="hidden" name="evidenceGiven" th:value = "${question.evidenceGiven}" />
+                    <td th:if="${question.asked}">
+                        <button type="submit" onclick="" th:text="${question.questionText}" style="flex-direction: column; background-color: #111;">question</button>
+                    </td>
+                    <td th:unless="${question.asked}">
+                        <button type="submit"  onclick="document.getElementById('actions').style.display = 'flex';" th:text="${question.questionText}" style="flex-direction: column; ">question</button>
+                    </td>
+                </form>
+            </tr>
 
-    <div class="item">
-        <span>4. </span>
-        <img src="character4.png" alt="Зображення 4">
-        <div class="buttonContainer">
-            <button onclick="toggleItem4()">Опитати</button>
         </div>
-    </div>
-
-    <div class="item">
-        <span>5. </span>
-        <img src="character5.png" alt="Зображення 5">
-        <div class="buttonContainer">
-            <button onclick="toggleItem5()">Опитати</button>
-        </div>
-    </div>
-
-    <div class="item">
-        <span>6. </span>
-        <img src="character6.png" alt="Зображення 6">
-        <div class="buttonContainer">
-            <button onclick="toggleItem6()">Опитати</button>
-        </div>
-    </div>
-
-    <div class="item">
-        <span>7. </span>
-        <img src="character7.png" alt="Зображення 7">
-        <div class="buttonContainer">
-            <button onclick="toggleItem7()">Опитати</button>
-        </div>
-    </div>
-
-    <div class="item">
-        <span>8. </span>
-        <img src="character8.png" alt="Зображення 8">
-        <div class="buttonContainer">
-            <button onclick="toggleItem8()">Опитати</button>
-        </div>
-    </div>
 </div>
 
-<div id="buttonContainer">
-    <button onclick="next()">Зберегти і обрати вбивцю</button>
-</div>
 
-<script>
-    function toggleItem1() {
-        location.href = "/character1"
-    }
 
-    function toggleItem2() {
-        location.href = "/character2"
-    }
-
-    function toggleItem3() {
-        location.href = "/character3"
-    }
-
-    function toggleItem4() {
-        location.href = "/character4"
-    }
-
-    function toggleItem5() {
-        location.href = "/character5"
-    }
-
-    function toggleItem6() {
-        location.href = "/character6"
-    }
-    function toggleItem7() {
-        location.href = "/character7"
-    }
-    function toggleItem8() {
-        location.href = "/character8"
-    }
-
-    function Book() {
-        location.href = "/Book"
-    }
-
-    function Back() {
-        history.back()
-    }
-
-    function next() {
-        location.href = "/End"
-    }
-
-</script>
+<img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="yourButtonClickFunction()">
+<img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image"
+     onclick="yourBottomLeftButtonClickFunction()">
 
 </body>
 
