@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -46,6 +46,7 @@
 
         #imageContainer {
             display: flex;
+            flex-direction: row-reverse;
             justify-content: space-around;
             align-items: center;
         }
@@ -75,44 +76,26 @@
     <div id="textContainer">
         <p>ЗІБРАНІ ПРЕДМЕТИ</p>
     </div>
-
+    </div>
     <div id="imageContainer">
-        <div class="item">
-            <span>1. </span>
-            <img src="magazine.jpg" alt="Зображення 1">
-            <img src="yes.png" alt="Галочка" class="label">
+        <div class="item" th:each="evidence: ${evidences}">
+            <img th:src="${evidence.photo} " alt="Evidence photo">
+            <p th:text="${evidence.name}" id="text">name</p>
         </div>
-
-        <div class="item">
-            <span>2. </span>
-            <img src="knife.png" alt="Зображення 2">
-            <img src="no.png" alt="Хрестик" class="label">
-        </div>
-
-        <div class="item">
-            <span>3. </span>
-            <img src="gun-removebg-preview.png" alt="Зображення 3">
-            <img src="yes.png" alt="Галочка" class="label">
-        </div>
-
-        <div class="item">
-            <span>4. </span>
-            <img src="clock.png" alt="Зображення 4">
-            <img src="no.png" alt="Хрестик" class="label">
-        </div>
-
-        <div class="item">
-            <span>5. </span>
-            <img src="photos.png" alt="Зображення 5">
-            <img src="no.png" alt="Хрестик" class="label">
-        </div>
+    </div>
     </div>
 
     <div id="buttonContainer">
-        <button>Повернутися до гри</button>
+        <button onclick="Back()">Повернутися до гри</button>
         <button>Зберегти і перейти в меню</button>
     </div>
 
+    <script>
+        function Back() {
+            history.back()
+        }
+    </script>
 </body>
+
 
 </html>
