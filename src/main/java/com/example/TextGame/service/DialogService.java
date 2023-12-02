@@ -28,14 +28,20 @@ public class DialogService {
     public DialogService()  {
     }
 
-    public ArrayList<Question> getPossibleQuestions(int characterNumber) throws IOException {
+    public ArrayList<Question> getPossibleQuestions(int characterNumber, String username) throws IOException {
         ArrayList<Question> allCharacterQuestions = setQuestions(characterNumber);
         ArrayList<Question> possibleQuestions = new ArrayList<Question>();
+        ArrayList<Integer> askedQuestions = userRepository.getAskedQuestions(username);
+        ArrayList<Integer> foundEvidence = userRepository.getFoundEvidence(username);
         for(int i=0; i<allCharacterQuestions.size(); i++){
-            String evidenceNeeded = allCharacterQuestions.get(i).getEvidenceNeeded();
-            if(userRepository.getQuetionStatus(allCharacterQuestions.get(i).getNumber()) == ""){
-                if (evidenceNeeded == "null" || userRepository.getEvidenceStatus(evidenceNeeded) == "found"){
-                    possibleQuestions.add(allCharacterQuestions.get(i));
+            int evidenceNeeded = allCharacterQuestions.get(i).getEvidenceNeeded();
+            int questionNumber = allCharacterQuestions.get(i).getNumber();
+
+            if(characterNumber == allCharacterQuestions.get(i).getCharacter()) {
+                if (!askedQuestions.contains(questionNumber)) {
+                    if (evidenceNeeded == 0 || foundEvidence.contains(evidenceNeeded)) {
+                        possibleQuestions.add(allCharacterQuestions.get(i));
+                    }
                 }
             }
         }
@@ -47,6 +53,17 @@ public class DialogService {
         ArrayList<Question> questions = new ArrayList<>();
         for (int i=0; i<allQuestions.size(); i++){
             if (characterNumber == allQuestions.get(i).getCharacter()) {
+                questions.add(allQuestions.get(i));
+            }
+        }
+        return questions;
+    }
+
+    public ArrayList<Question> getConnectedQuestions(int questionNumber) throws IOException {
+        ArrayList<Question> allQuestions = questionRepository.getAllQuestions();
+        ArrayList<Question> questions = new ArrayList<>();
+        for (int i=0; i<allQuestions.size(); i++){
+            if (questionNumber == allQuestions.get(i).getPrevious()) {
                 questions.add(allQuestions.get(i));
             }
         }

@@ -24,7 +24,7 @@ public class EvidenceTest {
     @Test
     public void testGetEvidenceFromFile() throws IOException {
         int number = 4;
-        Evidence evidence = evidenceRepository.getEvidenceFromFile(number);
+        Evidence evidence = evidenceRepository.getItemFromFile(number, "evidence.csv");
         assertNotNull(evidence);
 
         assertEquals(number, evidence.getNumber());
@@ -36,7 +36,7 @@ public class EvidenceTest {
 
     @Test
     public void testGetAllEvidences() throws IOException {
-        ArrayList<Evidence> allEvidences = evidenceRepository.getAllEvidences();
+        ArrayList<Evidence> allEvidences = evidenceRepository.getAllItems("evidence.csv");
         assertNotNull(allEvidences);
 
         // Checking if size of a list equals the amount

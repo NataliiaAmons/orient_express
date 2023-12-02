@@ -1,34 +1,41 @@
 package com.example.TextGame.domain;
 
-public class Conclusion {
+public class Conclusion implements Clue {
 
     private int number;
     private String name;
-    private String text;
+    private String description;
 
     // Setters
+    @Override
     public void setNumber(int number) {
         this.number = number;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
     }
 
+
     // Getters
+    @Override
     public int getNumber() {
         return number;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public String getText() {
-        return text;
+    @Override
+    public String getDescription() {
+        return description;
     }
 }

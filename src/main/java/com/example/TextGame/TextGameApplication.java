@@ -2,15 +2,19 @@ package com.example.TextGame;
 
 import com.example.TextGame.dao.CharacterRepository;
 import com.example.TextGame.dao.QuestionRepository;
+import com.example.TextGame.dao.UserRepository;
 import com.example.TextGame.domain.Character;
 import com.example.TextGame.domain.Question;
+import com.example.TextGame.service.CurrentSessionService;
 import com.example.TextGame.service.DialogService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +35,9 @@ public class TextGameApplication {
 	private QuestionRepository questionRepository;
 	@Autowired
 	public DialogService dialogService;
+
+	@Autowired
+	public UserRepository userRepository;
 	 /*
 	@GetMapping("/")
 	public String helloWorld(Model model) throws IOException {
@@ -65,12 +72,15 @@ public class TextGameApplication {
 */
 
 
-	@GetMapping("/")
+	//@GetMapping("/")
 	public String character1(Model model) {
 		try {
+			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+			String username = CurrentSessionService.getUsername(request);
+
 			Character character3 = characterRepository.getCharacterFromFile(3);
 			ArrayList<Character> allCharacters = characterRepository.getAllCharacters();
-			ArrayList<Question> possibleQuestions = dialogService.getPossibleQuestions(3);
+			ArrayList<Question> possibleQuestions = dialogService.getPossibleQuestions(3, username);
 			model.addAttribute("character", character3);
 			model.addAttribute("questions", possibleQuestions);
 
@@ -82,8 +92,5 @@ public class TextGameApplication {
 		return "character";
 	}
 
-	//@GetMapping("killer.html")
-	//public String killer(){
-		//return "killer";
-	//}
+
 }
