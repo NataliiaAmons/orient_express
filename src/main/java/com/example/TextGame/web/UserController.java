@@ -39,6 +39,8 @@ public class UserController {
     @PostMapping("/Describe") //lets user in if username is correct/available
     public String setUsername(Model model, @RequestParam("username") String username, @RequestParam("letIn") String letIn) throws IOException {//@ModelAttribute("user") User user){
         System.out.println("username:" + username);
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        CurrentSessionService.addUsernameToSession(request, username);
         if (letIn.equals("false")) {
 
             String alert = userService.usernameAlert(username);
@@ -51,8 +53,7 @@ public class UserController {
                 model.addAttribute("itIsMe", itIsMe);
                 return "main";
             }
-            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-            CurrentSessionService.addUsernameToSession(request, username);
+
             String name = CurrentSessionService.getUsername(request);
             userService.createUserFiles(name);
             return "Describe";
