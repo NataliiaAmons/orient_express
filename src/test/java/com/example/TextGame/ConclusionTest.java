@@ -29,7 +29,7 @@ public class ConclusionTest {
 
         assertEquals(number, conclusion.getNumber());
         assertEquals("SuspectConductorOfBrush", conclusion.getName());
-        assertEquals("Провідник є можливим вбивцею, бо він курить трубку.", conclusion.getDescription());
+        assertEquals("Виявлено, що провідник курить трубку.", conclusion.getDescription());
     }
 
     @Test
@@ -38,11 +38,11 @@ public class ConclusionTest {
         assertNotNull(allConclusion);
 
         // Checking if size of a list equals the amount
-        assertEquals(4, allConclusion.size()); 
+        assertEquals(6, allConclusion.size()); 
 
         // Testing for specific elements of list
         assertEquals(1, allConclusion.get(0).getNumber());
         assertEquals("SuspectConductorOfButton", allConclusion.get(2).getName());
-        assertEquals("Провідник є можливим вбивцею, бо знайдений ґудзик належить комусь з персоналу.", allConclusion.get(2).getDescription());
+        assertEquals("Знайдений ґудзик належить комусь з персоналу, але П'єр стверджує, щой ого форма в порядку.", allConclusion.get(2).getDescription());
     }
 }
