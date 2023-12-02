@@ -19,7 +19,7 @@ public class ViewConclusionsController {
    @GetMapping("/view")
    public String getConclusions(Model model) {
       try {
-         ArrayList<Conclusion> allConclusions = conclusionRepository.getAllConclusion();
+         ArrayList<Conclusion> allConclusions = conclusionRepository.getAllItems("conclusions.csv");
          model.addAttribute("conclusions", allConclusions);
       } catch (IOException e) {
          // Відповідна обробка винятку, наприклад, журнал і показ повідомлення про помилку.
