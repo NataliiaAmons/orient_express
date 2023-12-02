@@ -1,6 +1,6 @@
 package com.example.TextGame.domain;
 
-public class Evidence {
+public class Evidence implements Clue {
 
     private int number;
     private String name;
@@ -10,10 +10,12 @@ public class Evidence {
     private String status;
 
     // Setters
+    @Override
     public void setNumber(int number) {
         this.number = number;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -22,6 +24,7 @@ public class Evidence {
         this.photo = photo;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
@@ -35,10 +38,12 @@ public class Evidence {
     }
 
     // Getters
+    @Override
     public int getNumber() {
         return number;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -47,6 +52,7 @@ public class Evidence {
         return photo;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }

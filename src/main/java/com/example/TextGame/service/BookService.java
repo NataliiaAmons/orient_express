@@ -32,7 +32,7 @@ public class BookService {
         ArrayList<Evidence> bookEvidence = new ArrayList<>();
         ArrayList<Integer> foundEvidence = userRepository.getFoundEvidence(username);
         for(int i=0; i<foundEvidence.size(); i++){
-            Evidence evidence = evidenceRepository.getEvidenceFromFile(foundEvidence.get(i));
+            Evidence evidence = evidenceRepository.getItemFromFile(foundEvidence.get(i), "evidences.csv");
             bookEvidence.add(evidence);
 
         }

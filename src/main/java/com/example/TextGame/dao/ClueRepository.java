@@ -50,5 +50,5 @@ public abstract class ClueRepository<ClueType> {
             }
         }
         return allItems;
-    }
+    } 
 }
