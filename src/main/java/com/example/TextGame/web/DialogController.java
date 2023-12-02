@@ -1,9 +1,5 @@
 package com.example.TextGame.web;
 
-import com.example.TextGame.dao.CharacterRepository;
-import com.example.TextGame.dao.EvidenceRepository;
-import com.example.TextGame.dao.QuestionRepository;
-import com.example.TextGame.dao.UserRepository;
 import com.example.TextGame.domain.Character;
 import com.example.TextGame.service.CurrentSessionService;
 import com.example.TextGame.service.DialogService;
@@ -27,18 +23,11 @@ public class DialogController {
 
     @Autowired
     private DialogService dialogService;
-    @Autowired
-    private CharacterRepository characterRepository;
-    @Autowired
-    private QuestionRepository questionRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private EvidenceRepository evidenceRepository;
 
     @PostMapping("/dialog")
     public String getCharacter(@ModelAttribute("characterNumber") String characterNumber, Model model) throws IOException {
         String username = CurrentSessionService.username();
+        System.out.println("dialog: username - " + username);
         Character character = dialogService.getCharacter(Integer.parseInt(characterNumber));
         ArrayList<QuestionVM> questions = dialogService.getFirstVMQuestions(Integer.parseInt(characterNumber), username);
 

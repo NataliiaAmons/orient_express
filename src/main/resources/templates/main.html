@@ -82,12 +82,20 @@
 
 <body>
 
-<h1>Назва гри</h1>
+<h1 style="font-size:50px">Вбивство у Східному експресі</h1>
 
 <form action="#" th:action="@{/Describe}"  method="post">
-    <label>Введіть ваше ім'я:</label>
+    <label style="font-size:30px">Введіть ваше ім'я:</label>
     <input type="text" th:value="*{username}" name="username">
-    <button type="submit" value="Submit" onclick="saveAndContinue()">Зберегти і перейти далі</button>
+    <input type="hidden" name="letIn" th:value = "false" />
+    <label style="font-size:25px; color:red" th:utext="${alert}">alert</label>
+        <td th:if="${itIsMe}">
+            <input type="hidden" name="letIn" th:value = "true" />
+            <button style="font-size:20px" type="submit" onclick="saveAndContinue()">Це я</button>
+        </td>
+
+    <button style="font-size:20px" type="submit" onclick="saveAndContinue()">Зберегти і перейти далі</button>
+
 </form>
 
 <script>

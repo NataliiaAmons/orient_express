@@ -53,15 +53,12 @@ public class DialogServiceTest {
 
         ArrayList<Question> evidence = dialogService.getPossibleQuestions(1, "test");
 
-        //ArrayList<Integer> expected = new ArrayList<>();
-        int[] expected = {3, 4, 5};
-        //for(int i=0; i<e.length; i++){
-            //expected.add(e[i]);
-        //}
+        int[] expected = {2, 3, 4, 5};
 
         assertEquals(expected[0] ,evidence.get(0).getNumber());
         assertEquals(expected[1] ,evidence.get(1).getNumber());
         assertEquals(expected[2] ,evidence.get(2).getNumber());
+        assertEquals(expected[3] ,evidence.get(3).getNumber());
     }
 
     @Test
