@@ -48,9 +48,7 @@ public class MurderSceneController {
         }
 
         model.addAttribute("evidence", evidence);
-        //redirectAttributes.addFlashAttribute( "character", currentCharacter);
-//
-        //return new ModelAndView("redirect:/character", (Map<String, ?>) model);
+
         return "SceneOfTheMurder";
     }
 }

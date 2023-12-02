@@ -28,54 +28,37 @@ public class UserController {
     @Autowired
     private CharacterRepository characterRepository;
 
-    @GetMapping("/")
+    @GetMapping("/") //shows login page
     public String main(Model model){
 
         model.addAttribute("user", "user name");
+        model.addAttribute("itIsMe", false);
         return "main";
     }
 
-    //@GetMapping("/")
-    public String setUsername() throws IOException {//@ModelAttribute("user") User user){
-        //String username = user.getUsername();
+    @PostMapping("/Describe") //lets user in if username is correct/available
+    public String setUsername(Model model, @RequestParam("username") String username, @RequestParam("letIn") String letIn) throws IOException {//@ModelAttribute("user") User user){
+        System.out.println("username:" + username);
+        if (letIn.equals("false")) {
 
-        String username = "info";
-        try{
-            userService.checkIfUsernameIsAvailable(username);
-        }
-        catch(IOException e){}
-        finally {
+            String alert = userService.usernameAlert(username);
+            if (alert != "") {
+                boolean itIsMe = false;
+                if (alert == "Це ім'я вже використовується. Ви впевнені що це були ви?") {
+                    itIsMe = true;
+                }
+                model.addAttribute("alert", alert);
+                model.addAttribute("itIsMe", itIsMe);
+                return "main";
+            }
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             CurrentSessionService.addUsernameToSession(request, username);
             String name = CurrentSessionService.getUsername(request);
             userService.createUserFiles(name);
             return "Describe";
         }
-    }
-    @PostMapping("/Describe")
-    public String sdf(Model model, @RequestParam("username") String username) throws IOException {
-        model.addAttribute("message", "Hello Spring MVC Framework!");
-
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        CurrentSessionService.addUsernameToSession(request, username);
-        String name = CurrentSessionService.getUsername(request);
-        userService.createUserFiles(username);
-
-        System.out.println("username saved: " +username );
-        return"Describe";
+        else{return "Describe";}
     }
 
-    //@PostMapping("/dialog")
-    public String sdfd(Model model, @RequestParam("username") String username) throws IOException {
-        model.addAttribute("message", "Hello Spring MVC Framework!");
-
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        CurrentSessionService.addUsernameToSession(request, username);
-        String name = CurrentSessionService.getUsername(request);
-        userService.createUserFiles(username);
-
-        System.out.println("username saved: " +username );
-        return"Describe";
-    }
 
 }
