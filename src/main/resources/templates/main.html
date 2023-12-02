@@ -93,8 +93,9 @@
     </td>
     <label style="font-size:25px; color:red" th:utext="${alert}">alert</label>
     <td th:if="${itIsMe}">
-        <input type="hidden" name="letIn" th:value = "true"/>
-        <button style="font-size:20px" type="submit" >Це я</button>
+        <input type="hidden" name="letIn" value="false">
+        <input type="checkbox" id="letIn" name="letIn" value="true">
+        <label for="letIn">Це я </label>
     </td>
 
     <button style="font-size:20px" type="submit" >Зберегти і перейти далі</button>
