@@ -64,22 +64,7 @@
             background-color: #555;
         }
 
-        #bottomRightButton {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 50px;
-            height: 40px;
-            cursor: pointer;
-            border: 1px solid white;
-            border-radius: 5px;
-            background-color: #333;
-            padding: 5px;
-        }
 
-        #bottomRightButton:hover {
-            background-color: #555;
-        }
 
         button {
             margin-top: 20px;
@@ -340,11 +325,21 @@
     </div>
 
 
-    <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="yourButtonClickFunction()">
+    <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="Book()">
     <img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image"
-        onclick="yourBottomLeftButtonClickFunction()">
-    <img id="bottomRightButton" src="right.png" alt="Bottom Right Button Image"
-        onclick="yourBottomRightButtonClickFunction()">
+         onclick="Back()">
+
+    <script>
+
+    function Book() {
+            location.href = "/Book"
+        }
+
+    function Back() {
+      history.back();
+      }
+
+</script>
 
 </body>
 

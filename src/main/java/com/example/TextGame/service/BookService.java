@@ -27,8 +27,8 @@ public class BookService {
 
 
     public ArrayList<Evidence> getFoundEvidence(String username) throws IOException {
-       // HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-       // String username = CurrentSessionService.getUsername(request);
+        // HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        // String username = CurrentSessionService.getUsername(request);
         ArrayList<Evidence> bookEvidence = new ArrayList<>();
         ArrayList<Integer> foundEvidence = userRepository.getFoundEvidence(username);
         for(int i=0; i<foundEvidence.size(); i++){
@@ -42,4 +42,3 @@ public class BookService {
 
 
 }
-
