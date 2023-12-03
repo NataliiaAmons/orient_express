@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -46,9 +46,9 @@
 
         #imageContainer {
             display: flex;
+            flex-direction: row-reverse;
             justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         img {
@@ -68,70 +68,34 @@
             align-items: center;
             margin-bottom: 20px;
         }
-
-        .column {
-            flex: 1;
-            min-width: 300px;
-        }
     </style>
 </head>
 
 <body>
 
-<div id="textContainer">
-    <p>ЗІБРАНІ ПРЕДМЕТИ</p>
-</div>
-
-<div id="imageContainer">
-    <div class="item column">
-        <span>1. </span>
-        <img src="magazine.jpg" alt="Зображення 1">
+    <div id="textContainer">
+        <p>ЗІБРАНІ ПРЕДМЕТИ</p>
+    </div>
+    </div>
+    <div id="imageContainer">
+        <div class="item" th:each="evidence: ${evidences}">
+            <img th:src="${evidence.photo} " alt="Evidence photo">
+            <p th:text="${evidence.name}" id="text">name</p>
+        </div>
+    </div>
     </div>
 
-    <div class="item column">
-        <span>2. </span>
-        <img src="knife.png" alt="Зображення 2">
+    <div id="buttonContainer">
+        <button onclick="Back()">Повернутися до гри</button>
+        <button>Зберегти і перейти в меню</button>
     </div>
-
-    <div class="item column">
-        <span>3. </span>
-        <img src="button.png" alt="Зображення 3">
-    </div>
-
-    <div class="item column">
-        <span>4. </span>
-        <img src="letter_N.png" alt="Зображення 4">
-    </div>
-
-    <div class="item column">
-        <span>5. </span>
-        <img src="gun-removebg-preview.png" alt="Зображення 5">
-    </div>
-
-    <div class="item column">
-        <span>6. </span>
-        <img src="item.png" alt="Зображення 6">
-    </div>
-</div>
-
-<div id="buttonContainer">
-    <button onclick="Continue()">Повернутися до гри</button>
 
     <script>
-      function Continue() {
-      history.back();
-      }
-
+        function Back() {
+            history.back()
+        }
     </script>
-</div>
-
 </body>
 
+
 </html>
-
-
-
-
-
-
-
