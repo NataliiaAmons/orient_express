@@ -30,20 +30,10 @@ public class SiteController {
             return "Killer";
         }
 
-        @GetMapping("/Body") //анотація яка викликає запрос до сайту "Body"
-        public String getBody() {
-            return "Body";
-        }
 
-        @GetMapping("/Table") //анотація яка викликає запрос до сайту "Table"
-        public String getTable() {
-            return "Table";
-        }
 
-        @GetMapping("/Floor") //анотація яка викликає запрос до сайту "Floor"
-        public String getFloor() {
-            return "Floor";
-        }
+
+
 
         @GetMapping("/End") //анотація яка викликає запрос до сайту "End"
         public String getEnd() {

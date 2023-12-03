@@ -7,7 +7,6 @@ public class Evidence implements Clue {
     private String photo;
     private String description;
     private String location;
-    private String status;
 
     // Setters
     @Override
@@ -31,10 +30,6 @@ public class Evidence implements Clue {
 
     public void setLocation (String location) {
         this.location = location;
-    }
-
-    public void setStatus (String status) {
-        this.status = status;
     }
 
     // Getters
@@ -61,7 +56,4 @@ public class Evidence implements Clue {
         return location;
     }
 
-    public String getStatus() {
-        return status;
-    }
-}
+   }

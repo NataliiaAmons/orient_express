@@ -20,13 +20,8 @@ import java.io.IOException;
 public class UserController {
 
     @Autowired
-    public UserRepository userRepository;
-    @Autowired
     public UserService userService;
-    @Autowired
-    public DialogController dialogController;
-    @Autowired
-    private CharacterRepository characterRepository;
+
 
     @GetMapping("/") //shows login page
     public String main(Model model){
@@ -56,13 +51,9 @@ public class UserController {
             CurrentSessionService.addUsernameToSession(request, username);
             String name = CurrentSessionService.getUsername(request);
 
-            System.out.println("username:" + name);
-
             userService.createUserFiles(name);
             return "Describe";
         }
-
-
         else{
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             String name = CurrentSessionService.getUsername(request);

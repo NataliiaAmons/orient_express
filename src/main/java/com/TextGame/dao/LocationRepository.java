@@ -1,7 +1,6 @@
 package com.TextGame.dao;
 
-import com.TextGame.domain.Question;
-import com.TextGame.viewmodel.LocationVM;
+import com.TextGame.domain.Location;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
@@ -14,8 +13,8 @@ import java.util.ArrayList;
 
 @Repository
 public class LocationRepository {
-    public ArrayList<LocationVM> getAllLocations() throws IOException {
-        ArrayList<LocationVM> allLocations = new ArrayList<>();
+    public ArrayList<Location> getAllLocations() throws IOException {
+        ArrayList<Location> allLocations = new ArrayList<>();
 
         Resource resource = new ClassPathResource("static/locations.csv");
         File file = resource.getFile();
@@ -30,7 +29,7 @@ public class LocationRepository {
 
         while ((line = reader.readLine()) != null){
             String[] row = line.split(";");
-            LocationVM location = new LocationVM(Integer.valueOf(row[0]), Integer.valueOf(row[1]), row[2], row[3]);
+            Location location = new Location(Integer.valueOf(row[0]), Integer.valueOf(row[1]), row[2], row[3]);
              allLocations.add(location);
         }
         try {
