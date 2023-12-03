@@ -17,6 +17,7 @@ public class QuestionVM {
         this.character = question.getCharacter();
         this.number = question.getNumber();
         this.evidenceNeeded = question.getEvidenceNeeded();
+        this.evidenceGiven = question.getEvidenceGiven();
         this.questionText = question.getQuestionText();
         this.answer = question.getAnswer();
         this.previous = question.getPrevious();
@@ -44,47 +45,24 @@ public class QuestionVM {
         return evidenceNeeded;
     }
 
-    public void setEvidenceNeeded(int evidenceNeeded) {
-        this.evidenceNeeded = evidenceNeeded;
-    }
-
     public int getEvidenceGiven() {
         return evidenceGiven;
-    }
-
-    public void setEvidenceGiven(int evidenceGiven) {
-        this.evidenceGiven = evidenceGiven;
     }
 
     public String getQuestionText() {
         return questionText;
     }
 
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
-    }
-
     public String getAnswer() {
         return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     public int getPrevious() {
         return previous;
     }
 
-    public void setPrevious(int previous) {
-        this.previous = previous;
-    }
-
     public boolean isAsked() {
         return asked;
     }
 
-    public void setAsked(boolean asked) {
-        this.asked = asked;
-    }
 }

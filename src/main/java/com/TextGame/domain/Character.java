@@ -13,7 +13,6 @@ public class Character {
     private String name;
     private String photo;
     private String info;
-    private ArrayList<Question> questions = new ArrayList<Question>();
     public Character(){}
 
     // getters
@@ -29,9 +28,6 @@ public class Character {
     public String getInfo(){
         return info;
     }
-    public ArrayList<Question> getQuestions() {
-        return questions;
-    }
 
     // setters
     public void setNumber(int x){
@@ -45,13 +41,7 @@ public class Character {
     public void setInfo(String i){
         this. info = i;
     }
-    public void setQuestions(Question[]  allQuestions) {
-        for(int j=0; j<allQuestions.length; j++){
-            if(this.number == allQuestions[j].getCharacter()){
-                this.questions.add(allQuestions[j]);
-            }
-        }
-    }
+
 
 
 }

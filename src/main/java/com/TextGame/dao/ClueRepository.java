@@ -3,7 +3,10 @@ package com.TextGame.dao;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class ClueRepository<ClueType> {
@@ -15,7 +18,7 @@ public abstract class ClueRepository<ClueType> {
 
         Resource resource = new ClassPathResource("static/" + fileName);
         File file = resource.getFile();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");

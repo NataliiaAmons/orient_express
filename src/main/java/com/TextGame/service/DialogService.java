@@ -10,6 +10,9 @@ import com.TextGame.domain.Question;
 import com.TextGame.viewmodel.QuestionVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,43 +28,39 @@ public class DialogService {
     @Autowired
     private UserRepository userRepository;
 
+
     public Character getCharacter(int characterNumber) throws IOException {
         Character character = characterRepository.getCharacterFromFile(characterNumber);
         return character;
     }
+
     public ArrayList<QuestionVM> getFirstVMQuestions(int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
-
         ArrayList<Question> questions = getPossibleQuestions(characterNumber, username);
         ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
-
         for(Question question: questions){
             if(question.getPrevious()==0) {
                 boolean ifAsked = false;
                 for (int a : asked) {
                     if (a == question.getNumber()) {
-                        ifAsked = true;
-                    }
+                        ifAsked = true;}
                 }
                 QuestionVM vmquestion = new QuestionVM(question, ifAsked);
-                vmquestions.add(vmquestion);
-            }
+                vmquestions.add(vmquestion);}
         }
         return vmquestions;
     }
+
     public ArrayList<QuestionVM> getNextVMQuestions(int previousQuestion, int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
-
         ArrayList<Question> questions = getPossibleQuestions(characterNumber, username);
         ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
-
         for(Question question: questions){
             if(question.getPrevious()==previousQuestion) {
                 boolean ifAsked = false;
                 for (int a : asked) {
                     if (a == question.getNumber()) {
-                        ifAsked = true;
-                    }
+                        ifAsked = true;}
                 }
                 QuestionVM vmquestion = new QuestionVM(question, ifAsked);
                 vmquestions.add(vmquestion);
@@ -75,9 +74,8 @@ public class DialogService {
         ArrayList<Question> possibleQuestions = getPossibleQuestions(characterNumber, username);
         ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
         for(int i=0; i<possibleQuestions.size(); i++) {
-            if (asked.contains(characterNumber)) {
-                askedQuestions.add(String.valueOf('T'));
-            }
+            if (asked.contains(possibleQuestions.get(i).getNumber())) {
+                askedQuestions.add(String.valueOf('T'));}
             else{ askedQuestions.add(String.valueOf('F'));}
         }
         return askedQuestions;
@@ -89,26 +87,19 @@ public class DialogService {
         ArrayList<Integer> foundEvidence = userRepository.getFoundEvidence(username);
         for(int i=0; i<allCharacterQuestions.size(); i++){
             int evidenceNeeded = allCharacterQuestions.get(i).getEvidenceNeeded();
-            int questionNumber = allCharacterQuestions.get(i).getNumber();
-
             if(characterNumber == allCharacterQuestions.get(i).getCharacter()) {
                 if (evidenceNeeded == 0 || foundEvidence.contains(evidenceNeeded)) {
-                    possibleQuestions.add(allCharacterQuestions.get(i));
-                }
+                    possibleQuestions.add(allCharacterQuestions.get(i));}
             }
-        }
-        return possibleQuestions;
+        } return possibleQuestions;
     }
-
     public ArrayList<Question> getCharacterQuestions(int characterNumber) throws IOException {
         ArrayList<Question> allQuestions = questionRepository.getAllQuestions();
         ArrayList<Question> questions = new ArrayList<>();
         for (int i=0; i<allQuestions.size(); i++){
             if (characterNumber == allQuestions.get(i).getCharacter()) {
-                questions.add(allQuestions.get(i));
-            }
-        }
-        return questions;
+                questions.add(allQuestions.get(i)); }
+        } return questions;
     }
 
     public void addQuestionToAsked(String username, int questionNumber) throws IOException {
@@ -123,15 +114,22 @@ public class DialogService {
     }
 
     public String getEvidencePhoto(int evidenceNumber) throws IOException {
-        String photo;
-        if(evidenceNumber==0){
-            photo = " ";
-        }
-        else{
-            Evidence evidence = evidenceRepository.getItemFromFile(evidenceNumber, "evidence.csv");
-            photo = evidence.getPhoto();
-        }
+        String photo = " ";
+        Evidence evidence = evidenceRepository.getItemFromFile(evidenceNumber, "evidence.csv");
+        photo = evidence.getPhoto();
         return photo;
     }
+
+    public void getCharacterModel(String characterNumber, Model model) throws IOException {
+        String username = CurrentSessionService.username();
+        Character character = getCharacter(Integer.parseInt(characterNumber));
+        ArrayList<QuestionVM> questions = getFirstVMQuestions(Integer.parseInt(characterNumber), username);
+
+        model.addAttribute("character", character);
+        model.addAttribute("questions", questions);
+        model.addAttribute("info", true);
+        model.addAttribute("answerToPrevious", null);
+    }
+
 
 }

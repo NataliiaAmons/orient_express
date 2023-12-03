@@ -26,7 +26,6 @@ public class QuesionRepositoryTest {
         assertThat(question.getEvidenceNeeded(), is(1));
         assertThat(question.getEvidenceGiven(), is(0));
         assertThat(question.getPrevious(), is(0));
-
     }
 
     @Test

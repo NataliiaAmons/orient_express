@@ -30,7 +30,7 @@ public class EvidenceTest {
         assertEquals("Носовичок", evidence.getName());
         assertEquals("handkerchief.png", evidence.getPhoto());
         assertEquals("Вишуканий батистовий носовичок. У кутку вишита велика літера 'Н' (може бути як англійська 'h', так і українська 'н').", evidence.getDescription());
-        assertEquals("CrimeScene", evidence.getLocation());
+        assertEquals("3", evidence.getLocation());
     }
 
     @Test
@@ -39,13 +39,13 @@ public class EvidenceTest {
         assertNotNull(allEvidences);
 
         // Checking if size of a list equals the amount
-        assertEquals(7, allEvidences.size()); 
+        assertEquals(8, allEvidences.size());
 
         // Testing for specific elements of list
         assertEquals(6, allEvidences.get(5).getNumber());
         assertEquals("Кинжал", allEvidences.get(5).getName());
         assertEquals("Прямий кинджал – дешева річ, обрамлений у східному стилі, з рельєфною рукояткою та конусоподібним лезом. Лезо було вкрите плямами та виглядало доволі брудним. На ньому немає жодних відбитків пальців, окрім місіс Хаббард.", allEvidences.get(5).getDescription());
         assertEquals("knife.png", allEvidences.get(5).getPhoto());
-        assertEquals("InterrogationArea", allEvidences.get(5).getLocation());
+        assertEquals("0", allEvidences.get(5).getLocation());
     }
 }
