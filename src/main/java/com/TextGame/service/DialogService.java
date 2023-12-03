@@ -25,12 +25,12 @@ public class DialogService {
     @Autowired
     private UserRepository userRepository;
 
-    // tested
+
     public Character getCharacter(int characterNumber) throws IOException {
         Character character = characterRepository.getCharacterFromFile(characterNumber);
         return character;
     }
-    // tested
+
     public ArrayList<QuestionVM> getFirstVMQuestions(int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class DialogService {
         }
         return vmquestions;
     }
-    // tested
+
     public ArrayList<QuestionVM> getNextVMQuestions(int previousQuestion, int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class DialogService {
         }
         return vmquestions;
     }
-    // tested
+
     public ArrayList<String> answeredQuestions(int characterNumber, String username) throws IOException {
         ArrayList<String> askedQuestions = new ArrayList<>();
         ArrayList<Question> possibleQuestions = getPossibleQuestions(characterNumber, username);
@@ -85,7 +85,7 @@ public class DialogService {
         }
         return askedQuestions;
     }
-    // tested
+
     public ArrayList<Question> getPossibleQuestions(int characterNumber, String username) throws IOException {
         ArrayList<Question> allCharacterQuestions = getCharacterQuestions(characterNumber);
         ArrayList<Question> possibleQuestions = new ArrayList<Question>();
@@ -102,7 +102,7 @@ public class DialogService {
         }
         return possibleQuestions;
     }
-    // tested
+
     public ArrayList<Question> getCharacterQuestions(int characterNumber) throws IOException {
         ArrayList<Question> allQuestions = questionRepository.getAllQuestions();
         ArrayList<Question> questions = new ArrayList<>();
@@ -113,11 +113,11 @@ public class DialogService {
         }
         return questions;
     }
-    // tested
+
     public void addQuestionToAsked(String username, int questionNumber) throws IOException {
         userRepository.addQuestionToAsked(username, questionNumber);
     }
-    // tested
+
     public void addEvidenceToFound(int evidence) throws IOException {
         String username = CurrentSessionService.username();
         if(Integer.valueOf(evidence) != 0){
