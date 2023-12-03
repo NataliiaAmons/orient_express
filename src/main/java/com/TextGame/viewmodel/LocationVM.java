@@ -1,6 +1,6 @@
-package com.TextGame.domain;
+package com.TextGame.viewmodel;
 
-public class Location {
+public class LocationVM {
 
 
     private String name;
@@ -9,7 +9,7 @@ public class Location {
     private String text;
 
 
-    public Location(int number, int previous, String name, String text){
+    public LocationVM(int number, int previous, String name, String text){
         this.number = number;
         this.previous = previous;
         this.name = name;
@@ -21,7 +21,9 @@ public class Location {
         return previous;
     }
 
-
+    public void setPrevious(int previous) {
+        this.previous = previous;
+    }
 
     public String getText() {
         return text;
@@ -39,9 +41,13 @@ public class Location {
         this.name = name;
     }
 
+    public int previous() {
+        return previous;
+    }
 
-
-
+    public void setAdditionalInfo(String print) {
+        this.text = print;
+    }
 
     public int getNumber() {
         return number;
