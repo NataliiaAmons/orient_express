@@ -53,6 +53,7 @@ public class UserController {
                 return "main";
             }
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            CurrentSessionService.addUsernameToSession(request, username);
             String name = CurrentSessionService.getUsername(request);
 
             System.out.println("username:" + name);
