@@ -127,10 +127,8 @@ public class DialogService {
 
     public String getEvidencePhoto(int evidenceNumber) throws IOException {
         String photo = " ";
-        if(evidenceNumber!=0){
-            Evidence evidence = evidenceRepository.getItemFromFile(evidenceNumber, "evidence.csv");
-            photo = evidence.getPhoto();
-        }
+        Evidence evidence = evidenceRepository.getItemFromFile(evidenceNumber, "evidence.csv");
+        photo = evidence.getPhoto();
         return photo;
     }
 

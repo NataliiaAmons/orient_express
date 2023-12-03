@@ -107,32 +107,37 @@
 
 <body>
 
-    <div id="left">
-        <img src="Puaro.png" alt="Background Image" style="max-width: 100%; max-height: 100%;">
+<div id="left">
+    <div th:each="evidence: ${evidences}">
+        <img th:src="${evidence.photo} " alt=" " width="400"
+             height="400">
     </div>
+</div>
 
-    <div id="right">
-        <p id="text"> text .</p>
-        <button id="showActionsBtn" onclick="showButtons()">Оглянути місце вбивства</button>
+<div id="right">
 
-        <div id="actions" style="display: none; flex-direction: column;">
-            <div id="imageContainer" >
-                <div th:each="location: ${locations}">
-                    <form action="#" th:action="@{/location}" method="post" style="flex-direction: row">
-                        <input type="hidden" name="locationNumber" th:value = "${location.number}" />
-                        <input type="hidden" name="text" th:value = "${location.text}" />
-                        <button type="submit" value="Submit" th:text="${location.name}"></button>
-                    </form>
-                </div>
+    <div id="actions" style="flex-direction: column;">
+        <div id="imageContainer" >
+            <p style="font-size:18px" th:text="${text}"></p>
+            <div th:each="evidence: ${evidences}">
+                <p style="font-size:18px"> -  <span th:text="${evidence.description}"></span></p>
+            </div>
+            <div th:each="location: ${locations}">
+                <form action="#" th:action="@{/location}" method="post" style="flex-direction: row">
+                    <input type="hidden" name="locationNumber" th:value = "${location.number}" />
+                    <input type="hidden" name="previous" th:value = "${location.previous}" />
+                    <button type="submit" value="Submit" th:text="${location.name}"></button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
 
-    <img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="Book()">
-    <img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image" onclick="Back()">
-    <img id="bottomRightButton" src="right.png" alt="Bottom Right Button Image"
-         onclick="BottomRightButtonClickFunction()">
+<img id="topRightButton" src="book-removebg-preview.png" alt="Button Image" onclick="Book()">
+<img id="bottomLeftButton" src="left.png" alt="Bottom Left Button Image" onclick="Back()">
+<img id="bottomRightButton" src="right.png" alt="Bottom Right Button Image"
+     onclick="BottomRightButtonClickFunction()">
 
 <script>
 

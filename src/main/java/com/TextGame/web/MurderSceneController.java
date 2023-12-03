@@ -1,9 +1,13 @@
 package com.TextGame.web;
 
+import com.TextGame.domain.Character;
 import com.TextGame.domain.Evidence;
 import com.TextGame.service.CurrentSessionService;
 import com.TextGame.dao.EvidenceRepository;
 import com.TextGame.dao.UserRepository;
+import com.TextGame.service.MurderSceneService;
+import com.TextGame.viewmodel.LocationVM;
+import com.TextGame.viewmodel.QuestionVM;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,32 +27,40 @@ public class MurderSceneController {
     private EvidenceRepository evidenceRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private MurderSceneService murderSceneService;
+    @Autowired
+    private CurrentSessionService currentSessionService;
+
+    public MurderSceneController() {
+    }
 
     @GetMapping("/SceneOfTheMurder")
     //анотація яка викликає запрос до сайту "SceneOfTheMurder"
-    public String getSceneOfTheMurder() {
+    public String getSceneOfTheMurder(Model model) {
         System.out.println("SceneOfTheMurder");
+
+        ArrayList<LocationVM> locations = murderSceneService.getLocations(0);
+        model.addAttribute("locations", locations);
         return "SceneOfTheMurder";
     }
 
     @PostMapping("/location")
-    public String getCharacter(@ModelAttribute("location") String location, Model model) throws IOException {
-        System.out.println("some=" + location);
-        ArrayList<Evidence> allEvidence = evidenceRepository.getAllItems("evidence.csv");
-        ArrayList<Evidence> evidence = new ArrayList<>();
-        for(int i=0; i<allEvidence.size(); i++) {
-            if (allEvidence.get(i).getLocation().equals(location)) {
-                evidence.add(allEvidence.get(i));
-            }
-        }
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String username = CurrentSessionService.getUsername(request);
-        for(int i=0; i<evidence.size(); i++) {
-            userRepository.addEvidenceToFound(username, evidence.get(i).getNumber());
-        }
+    public String getCharacter(@ModelAttribute("locationNumber") String locationNumber, @ModelAttribute("text") String text, Model model) throws IOException {
+        System.out.println("some=" + locationNumber);
 
-        model.addAttribute("evidence", evidence);
+        ArrayList<Evidence> evidences = murderSceneService.getLocationEvidence(Integer.valueOf(locationNumber));
+        ArrayList<LocationVM> locations = murderSceneService.getLocations(Integer.valueOf(locationNumber));
 
-        return "SceneOfTheMurder";
+        String username = CurrentSessionService.username();
+        model.addAttribute("evidences", evidences);
+        model.addAttribute("locations", locations);
+        model.addAttribute("text", text);
+
+
+        return "SceneOfTheMurderLocation";
     }
+
+
+
 }
