@@ -128,7 +128,7 @@ public class DialogService {
             photo = " ";
         }
         else{
-            Evidence evidence = evidenceRepository.getEvidenceFromFile(evidenceNumber);
+            Evidence evidence = evidenceRepository.getItemFromFile(evidenceNumber, "evidence.csv");
             photo = evidence.getPhoto();
         }
         return photo;

@@ -34,7 +34,7 @@ public class MurderSceneController {
     @PostMapping("/location")
     public String getCharacter(@ModelAttribute("location") String location, Model model) throws IOException {
         System.out.println("some=" + location);
-        ArrayList<Evidence> allEvidence = evidenceRepository.getAllEvidences();
+        ArrayList<Evidence> allEvidence = evidenceRepository.getAllItems("evidence.csv");
         ArrayList<Evidence> evidence = new ArrayList<>();
         for(int i=0; i<allEvidence.size(); i++) {
             if (allEvidence.get(i).getLocation().equals(location)) {
