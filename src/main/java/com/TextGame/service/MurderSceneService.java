@@ -4,7 +4,8 @@ import com.TextGame.dao.EvidenceRepository;
 import com.TextGame.dao.LocationRepository;
 import com.TextGame.dao.UserRepository;
 import com.TextGame.domain.Evidence;
-import com.TextGame.viewmodel.LocationVM;
+import com.TextGame.domain.Location;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -15,17 +16,23 @@ import java.util.ArrayList;
 public class MurderSceneService {
     @Autowired
     private EvidenceRepository evidenceRepository;
-    @Autowired
+    //@Autowired
+    //private LocationRepository locationRepository;
+
     private LocationRepository locationRepository;
+    @BeforeEach
+    public void setUp() {
+        locationRepository = new LocationRepository();
+    }
     @Autowired
     private UserRepository userRepository;
 
 
-    public ArrayList<LocationVM> getLocations(int previous) throws IOException {
+    public ArrayList<Location> getLocations(int previous) throws IOException {
 
-        ArrayList<LocationVM> locationsFromFile = locationRepository.getAllLocations();
-        ArrayList<LocationVM> locations = new ArrayList<>();
-        for(LocationVM i: locationsFromFile){
+        ArrayList<Location> locationsFromFile = locationRepository.getAllLocations();
+        ArrayList<Location> locations = new ArrayList<>();
+        for(Location i: locationsFromFile){
             if (i.getPrevious()==previous) {
                 locations.add(i);
             }
@@ -52,13 +59,11 @@ public class MurderSceneService {
             userRepository.addEvidenceToFound(username, evidence.getNumber());
         }
 
-        ArrayList<LocationVM> locations = getLocations(Integer.valueOf(locationNumber));
-
+        ArrayList<Location> locations = getLocations(Integer.valueOf(locationNumber));
 
         model.addAttribute("evidences", evidences);
         model.addAttribute("locations", locations);
         model.addAttribute("text", text);
-
     }
 
 }
