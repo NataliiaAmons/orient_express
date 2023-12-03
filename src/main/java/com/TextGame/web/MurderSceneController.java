@@ -37,7 +37,7 @@ public class MurderSceneController {
 
     @GetMapping("/SceneOfTheMurder")
     //анотація яка викликає запрос до сайту "SceneOfTheMurder"
-    public String getSceneOfTheMurder(Model model) {
+    public String getSceneOfTheMurder(Model model) throws IOException {
         System.out.println("SceneOfTheMurder");
 
         ArrayList<LocationVM> locations = murderSceneService.getLocations(0);
@@ -49,14 +49,7 @@ public class MurderSceneController {
     public String getCharacter(@ModelAttribute("locationNumber") String locationNumber, @ModelAttribute("text") String text, Model model) throws IOException {
         System.out.println("some=" + locationNumber);
 
-        ArrayList<Evidence> evidences = murderSceneService.getLocationEvidence(Integer.valueOf(locationNumber));
-        ArrayList<LocationVM> locations = murderSceneService.getLocations(Integer.valueOf(locationNumber));
-
-        String username = CurrentSessionService.username();
-        model.addAttribute("evidences", evidences);
-        model.addAttribute("locations", locations);
-        model.addAttribute("text", text);
-
+        murderSceneService.getAnswerModel(Integer.valueOf(locationNumber), text, model);
 
         return "SceneOfTheMurderLocation";
     }

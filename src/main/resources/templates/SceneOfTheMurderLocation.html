@@ -126,6 +126,7 @@
                 <form action="#" th:action="@{/location}" method="post" style="flex-direction: row">
                     <input type="hidden" name="locationNumber" th:value = "${location.number}" />
                     <input type="hidden" name="previous" th:value = "${location.previous}" />
+                    <input type="hidden" name="text" th:value = "${location.text}" />
                     <button type="submit" value="Submit" th:text="${location.name}"></button>
                 </form>
             </div>

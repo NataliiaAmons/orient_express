@@ -31,7 +31,7 @@ public class LocationRepository {
         while ((line = reader.readLine()) != null){
             String[] row = line.split(";");
             LocationVM location = new LocationVM(Integer.valueOf(row[0]), Integer.valueOf(row[1]), row[2], row[3]);
-            allLocations.add(location);
+             allLocations.add(location);
         }
         try {
             reader.close();
