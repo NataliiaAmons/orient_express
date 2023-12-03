@@ -17,6 +17,7 @@ public class QuestionVM {
         this.character = question.getCharacter();
         this.number = question.getNumber();
         this.evidenceNeeded = question.getEvidenceNeeded();
+        this.evidenceGiven = question.getEvidenceGiven();
         this.questionText = question.getQuestionText();
         this.answer = question.getAnswer();
         this.previous = question.getPrevious();
