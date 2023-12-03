@@ -18,22 +18,11 @@ import java.util.ArrayList;
 @Controller
 public class MurderSceneController {
     @Autowired
-    private EvidenceRepository evidenceRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private MurderSceneService murderSceneService;
-    @Autowired
-    private CurrentSessionService currentSessionService;
-
-    public MurderSceneController() {
-    }
 
     @GetMapping("/SceneOfTheMurder")
     //анотація яка викликає запрос до сайту "SceneOfTheMurder"
     public String getSceneOfTheMurder(Model model) throws IOException {
-        System.out.println("SceneOfTheMurder");
-
         ArrayList<Location> locations = murderSceneService.getLocations(0);
         model.addAttribute("locations", locations);
         return "SceneOfTheMurder";
@@ -41,13 +30,8 @@ public class MurderSceneController {
 
     @PostMapping("/location")
     public String getCharacter(@ModelAttribute("locationNumber") String locationNumber, @ModelAttribute("text") String text, Model model) throws IOException {
-        System.out.println("some=" + locationNumber);
-
         murderSceneService.getAnswerModel(Integer.valueOf(locationNumber), text, model);
-
         return "SceneOfTheMurderLocation";
     }
-
-
 
 }

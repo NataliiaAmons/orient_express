@@ -53,8 +53,6 @@ public class MurderSceneService {
         }
 
         ArrayList<Location> locations = getLocations(Integer.valueOf(locationNumber));
-
-
         model.addAttribute("evidences", evidences);
         model.addAttribute("locations", locations);
         model.addAttribute("text", text);

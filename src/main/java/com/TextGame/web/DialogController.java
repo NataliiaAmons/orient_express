@@ -25,16 +25,7 @@ public class DialogController {
 
     @PostMapping("/dialog")
     public String getCharacter(@ModelAttribute("characterNumber") String characterNumber, Model model) throws IOException {
-        String username = CurrentSessionService.username();
-        System.out.println("dialog: username - " + username);
-        Character character = dialogService.getCharacter(Integer.parseInt(characterNumber));
-        ArrayList<QuestionVM> questions = dialogService.getFirstVMQuestions(Integer.parseInt(characterNumber), username);
-
-        model.addAttribute("character", character);
-        model.addAttribute("questions", questions);
-        model.addAttribute("info", true);
-        model.addAttribute("answerToPrevious", null);
-
+        dialogService.getCharacterModel(characterNumber, model);
         return "character";
     }
 

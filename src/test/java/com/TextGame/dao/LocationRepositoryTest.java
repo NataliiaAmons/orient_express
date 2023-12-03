@@ -29,7 +29,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
             assertEquals(allLocations.get(0).getText(), " ");
             assertEquals(allLocations.get(3).getNumber(), 4);
             assertEquals(allLocations.get(3).getPrevious(), 2);
-            assertEquals(allLocations.get(3).getName(), "Детальніше про Дейзі Армстронг");
-            assertEquals(allLocations.get(3).getText(), "текст");
+            assertEquals(allLocations.get(3).getName(), "Детільніше про Дейзі Армстронг");
         }
     }

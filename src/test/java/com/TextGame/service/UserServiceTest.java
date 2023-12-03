@@ -14,10 +14,6 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    private final Path workingDir = Path.of("", "src/main/resources/users/");
-
-
-
     @Test
     public void UserService_checkIfUsernameIsAvailable_True() throws IOException {
         boolean available = userService.checkIfUsernameIsAvailable("does-not-exist");
