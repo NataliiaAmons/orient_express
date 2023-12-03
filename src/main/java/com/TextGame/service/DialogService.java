@@ -25,10 +25,12 @@ public class DialogService {
     @Autowired
     private UserRepository userRepository;
 
+    // tested
     public Character getCharacter(int characterNumber) throws IOException {
         Character character = characterRepository.getCharacterFromFile(characterNumber);
         return character;
     }
+    // tested
     public ArrayList<QuestionVM> getFirstVMQuestions(int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
 
@@ -49,6 +51,7 @@ public class DialogService {
         }
         return vmquestions;
     }
+    // tested
     public ArrayList<QuestionVM> getNextVMQuestions(int previousQuestion, int characterNumber, String username) throws IOException {
         ArrayList<QuestionVM> vmquestions = new ArrayList<>();
 
@@ -69,20 +72,20 @@ public class DialogService {
         }
         return vmquestions;
     }
-
+    // tested
     public ArrayList<String> answeredQuestions(int characterNumber, String username) throws IOException {
         ArrayList<String> askedQuestions = new ArrayList<>();
         ArrayList<Question> possibleQuestions = getPossibleQuestions(characterNumber, username);
         ArrayList<Integer> asked = userRepository.getAskedQuestions(username);
         for(int i=0; i<possibleQuestions.size(); i++) {
-            if (asked.contains(characterNumber)) {
+            if (asked.contains(possibleQuestions.get(i).getNumber())) {
                 askedQuestions.add(String.valueOf('T'));
             }
             else{ askedQuestions.add(String.valueOf('F'));}
         }
         return askedQuestions;
     }
-
+    // tested
     public ArrayList<Question> getPossibleQuestions(int characterNumber, String username) throws IOException {
         ArrayList<Question> allCharacterQuestions = getCharacterQuestions(characterNumber);
         ArrayList<Question> possibleQuestions = new ArrayList<Question>();
@@ -99,7 +102,7 @@ public class DialogService {
         }
         return possibleQuestions;
     }
-
+    // tested
     public ArrayList<Question> getCharacterQuestions(int characterNumber) throws IOException {
         ArrayList<Question> allQuestions = questionRepository.getAllQuestions();
         ArrayList<Question> questions = new ArrayList<>();
@@ -110,11 +113,11 @@ public class DialogService {
         }
         return questions;
     }
-
+    // tested
     public void addQuestionToAsked(String username, int questionNumber) throws IOException {
         userRepository.addQuestionToAsked(username, questionNumber);
     }
-
+    // tested
     public void addEvidenceToFound(int evidence) throws IOException {
         String username = CurrentSessionService.username();
         if(Integer.valueOf(evidence) != 0){
@@ -123,11 +126,8 @@ public class DialogService {
     }
 
     public String getEvidencePhoto(int evidenceNumber) throws IOException {
-        String photo;
-        if(evidenceNumber==0){
-            photo = " ";
-        }
-        else{
+        String photo = " ";
+        if(evidenceNumber!=0){
             Evidence evidence = evidenceRepository.getItemFromFile(evidenceNumber, "evidence.csv");
             photo = evidence.getPhoto();
         }
