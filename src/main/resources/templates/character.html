@@ -147,7 +147,7 @@
 
     <div id="actions" style="display: none; flex-direction: column;">
         <p th:text="${answerToPrevious}">answer</p>
-        <img th:src="${evidencePhoto}" alt="Background Image" style="max-width: 100%; max-height: 100%;">
+        <img th:src="${evidencePhoto}" alt=" " style="max-width: 100%; max-height: 100%;">
             <tr th:each="question: ${questions}">
                 <form action="#" th:action="@{/character}" method="post" style="flex-direction: column">
                     <input type="hidden" name="Previous" th:value = "${Previous}" />

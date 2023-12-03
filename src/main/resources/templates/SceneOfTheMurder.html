@@ -112,13 +112,13 @@
     </div>
 
     <div id="right">
-        <p id="text"> text .</p>
+        <p id="text" style="font-size:18px">Пуаро оглянув купе. Перше враження, яке воно на нього справило – тут дуже холодно. Вікно було підняте на максимально можливу висоту, а штори були складені. Ніхто не міг покинути купе цим шляхом. Можливо, вікно було відчинене для того, щоб змусити нас так подумати; але замет повністю зруйнував його задум. Жодних відбитків. Це значить, що їх хтось витер.<br/><br/>Його увага нарешті була прикута до нерухомого тіла, що лежало на ліжку. Ретчетт лежав на спині. Його піжама, вкрита іржавими плямами, була розстебнута та відкинута в різні боки.</p>
         <button id="showActionsBtn" onclick="showButtons()">Оглянути місце вбивства</button>
 
         <div id="actions" style="display: none; flex-direction: column;">
             <div id="imageContainer" >
                 <div th:each="location: ${locations}">
-                    <form action="#" th:action="@{/location}" method="post" style="flex-direction: row">
+                    <form action="#" th:action="@{/location}" method="post" style="flex-direction: column">
                         <input type="hidden" name="locationNumber" th:value = "${location.number}" />
                         <input type="hidden" name="text" th:value = "${location.text}" />
                         <button type="submit" value="Submit" th:text="${location.name}"></button>

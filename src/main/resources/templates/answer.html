@@ -113,6 +113,12 @@
             margin: 5px;
             text-align: center;
         }
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
     </style>
     <script th:inline="javascript">
 
@@ -141,8 +147,8 @@
 
 <div id="right">
     <div id="actions" style="flex-direction: column;">
+        <img th:src="${evidencePhoto}" alt=" " style="max-width: 30%; max-height: 30%;">
         <p style="font-size:18px" th:text="${answerToPrevious}">answer</p>
-        <img th:src="${evidencePhoto}" alt=" " style="max-width: 100%; max-height: 100%;">
         <tr th:each="question: ${questions}">
             <form action="#" th:action="@{/character}" method="post" style="flex-direction: column">
                 <input type="hidden" name="Previous" th:value = "${Previous}" />

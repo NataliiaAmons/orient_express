@@ -124,7 +124,7 @@ public class DialogServiceTest {
         Character character = dialogService.getCharacter(5);
         assertThat(character.getNumber(), is(5));
         assertThat(character.getName(), is("провідник П'єр Мішель"));
-        assertThat(character.getInfo(), is("опис"));
+        assertThat(character.getInfo(), is("Провідник, який працює на Східному експресі."));
         assertThat(character.getPhoto(), is("character5.png"));
     }
     @Test

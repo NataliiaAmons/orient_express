@@ -80,7 +80,7 @@
 
     <div id="imageContainer"  >
         <div th:each="evidence: ${evidences}">
-            <img th:src="${evidence.photo} " alt="Evidence photo" >
+            <img th:src="${evidence.photo} " alt=" " >
             <p th:text="${evidence.name}" id ="text">name</p>
         </div>
     </div>
