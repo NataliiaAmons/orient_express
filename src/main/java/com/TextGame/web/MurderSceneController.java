@@ -1,9 +1,9 @@
 package com.TextGame.web;
 
+import com.TextGame.domain.Evidence;
 import com.TextGame.service.CurrentSessionService;
 import com.TextGame.dao.EvidenceRepository;
 import com.TextGame.dao.UserRepository;
-import com.TextGame.domain.Evidence;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class MurderSceneController {
     @PostMapping("/location")
     public String getCharacter(@ModelAttribute("location") String location, Model model) throws IOException {
         System.out.println("some=" + location);
-        ArrayList<Evidence> allEvidence = evidenceRepository.getAllItems("evidences.csv");
+        ArrayList<Evidence> allEvidence = evidenceRepository.getAllItems("evidence.csv");
         ArrayList<Evidence> evidence = new ArrayList<>();
         for(int i=0; i<allEvidence.size(); i++) {
             if (allEvidence.get(i).getLocation().equals(location)) {
@@ -48,9 +48,7 @@ public class MurderSceneController {
         }
 
         model.addAttribute("evidence", evidence);
-        //redirectAttributes.addFlashAttribute( "character", currentCharacter);
-//
-        //return new ModelAndView("redirect:/character", (Map<String, ?>) model);
+
         return "SceneOfTheMurder";
     }
 }

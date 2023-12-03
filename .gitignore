@@ -35,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/users/nullevidence.csv
+/src/main/resources/users/nullquestions.csv

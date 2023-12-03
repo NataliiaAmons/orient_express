@@ -68,6 +68,7 @@
             align-items: center;
             margin-bottom: 20px;
         }
+
     </style>
 </head>
 
@@ -76,25 +77,23 @@
     <div id="textContainer">
         <p>ЗІБРАНІ ПРЕДМЕТИ</p>
     </div>
-    </div>
-    <div id="imageContainer">
-        <div class="item" th:each="evidence: ${evidences}">
-            <img th:src="${evidence.photo} " alt="Evidence photo">
-            <p th:text="${evidence.name}" id="text">name</p>
+
+    <div id="imageContainer"  >
+        <div th:each="evidence: ${evidences}">
+            <img th:src="${evidence.photo} " alt="Evidence photo" >
+            <p th:text="${evidence.name}" id ="text">name</p>
         </div>
-    </div>
     </div>
 
     <div id="buttonContainer">
         <button onclick="Back()">Повернутися до гри</button>
-        <button>Зберегти і перейти в меню</button>
     </div>
 
-    <script>
-        function Back() {
-            history.back()
-        }
-    </script>
+<script>
+    function Back() {
+        history.back()
+    }
+</script>
 </body>
 
 
