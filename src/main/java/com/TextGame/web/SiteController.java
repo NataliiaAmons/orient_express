@@ -93,9 +93,13 @@ public class SiteController {
         @GetMapping("/Victory") //анотація яка викликає запрос до сайту "Victory"
         public String getGood() {return "Victory";}
 
+        @GetMapping("/Confirmation") //анотація яка викликає запрос до сайту "Confirmation"
+        public String getConfirmation() {
+            return "Confirmation";
+        }
+
         @GetMapping("/Loss") //анотація яка викликає запрос до сайту "Loss"
         public String getLoss() {
             return "Loss";
         }
-    }
-
+}

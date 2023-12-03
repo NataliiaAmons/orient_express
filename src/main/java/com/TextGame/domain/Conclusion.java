@@ -1,13 +1,10 @@
 package com.TextGame.domain;
 
-public class Evidence implements Clue {
+public class Conclusion implements Clue {
 
     private int number;
     private String name;
-    private String photo;
     private String description;
-    private String location;
-    private String status;
 
     // Setters
     @Override
@@ -20,22 +17,11 @@ public class Evidence implements Clue {
         this.name = name;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
     @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setLocation (String location) {
-        this.location = location;
-    }
-
-    public void setStatus (String status) {
-        this.status = status;
-    }
 
     // Getters
     @Override
@@ -48,20 +34,8 @@ public class Evidence implements Clue {
         return name;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
     @Override
     public String getDescription() {
         return description;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getStatus() {
-        return status;
     }
 }

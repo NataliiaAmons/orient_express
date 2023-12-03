@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помилка</title>
+    <style>
+
+        body {
+            position: relative;
+            background: url('bad.jpg') center/cover no-repeat;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #buttonContainer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            z-index: -1;
+            filter: blur(5px);
+
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: black;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+
+        a {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 10px;
+            background-color: #555;
+            color: white;
+            margin: 10px 0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            color: white;
+        }
+
+        li {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<h1>На жаль, Ви зробили не вірний вибір.</h1>
+
+<div id="buttonContainer">
+    <a th:href="@{/view}">Переглянути висновки</a>
+</div>
+
+<div th:if="${conclusions}">
+    <h2>Висновки які варто було б узяти до уваги:</h2>
+    <ul>
+        <li th:each="conclusion : ${conclusions}" th:text="${conclusion.description}"></li>
+    </ul>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+                body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+        }
+
+        #buttonContainer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 10px;
+            background-color: #333;
+            color: white;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+        }
+
+        #textContainer {
+            margin-top: 20px;
+        }
+
+        #imageContainer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 20px;
+        }
+
+        .label {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #bottomRightButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        #bottomRightButton:hover {
+            background-color: #555;
+        }
+
+        .buttonContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.toggle-slider {
+            background-color: #555;
+        }
+
+        input:focus+.toggle-slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.toggle-slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="textContainer">
+  <p>ОБЕРІТЬ ПЕРСОНАЖА</p>
+</div>
+
+<div id="imageContainer">
+  <!-- Repeat this block for each character -->
+  <div class="item">
+    <span>1. </span>
+    <img src="character1.png" alt="Зображення 1">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>2. </span>
+    <img src="character2.png" alt="Зображення 2">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>3. </span>
+    <img src="character3.png" alt="Зображення 3">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>4. </span>
+    <img src="character4.png" alt="Зображення 4">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>5. </span>
+    <img src="character5.png" alt="Зображення 5">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>6. </span>
+    <img src="character6.png" alt="Зображення 6">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>7. </span>
+    <img src="character7.png" alt="Зображення 7">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>8. </span>
+    <img src="character8.png" alt="Зображення 8">
+    <div class="buttonContainer">
+      <label class="toggle-switch">
+        <input type="checkbox" onchange="toggleItem(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+</div>
+
+<div id="buttonContainer">
+  <button onclick="checkAndRedirect()">Зберегти і звершити</button>
+</div>
+
+<script>
+        function toggleItem(checkbox) {
+            const itemContainer = checkbox.closest('.item');
+            const toggleSlider = itemContainer.querySelector('.toggle-slider');
+
+            if (checkbox.checked) {
+                // Do something when the checkbox is checked (e.g., change appearance)
+                toggleSlider.style.backgroundColor = '#ff1e00';
+            } else {
+                // Do something when the checkbox is unchecked (e.g., revert appearance)
+                toggleSlider.style.backgroundColor = '#333';
+            }
+        }
+
+       let confirmationPageVisits = 0;
+
+        function checkAndRedirect() {
+      let heroes = 0;
+
+      for (let i = 1; i <= 8; i++) {
+        const toggleSlider = document.querySelector(`.item:nth-child(${i}) .toggle-slider`);
+        const color = getComputedStyle(toggleSlider).backgroundColor;
+
+        if (color === 'rgb(255, 30, 0)') {
+          heroes++;
+        }
+      }
+
+      if (heroes == 8) {
+        location.href = "/Victory";
+      } else {
+        // Check if Confirmation page visits exceed the limit
+        if (confirmationPageVisits < 2) {
+          confirmationPageVisits++;
+          location.href = "/Confirmation";
+        } else {
+          // Redirect to Loss page if the limit is exceeded
+          location.href = "/Loss";
+        }
+      }
+    }
+    </script>
+
+</body>
+
+</html>
